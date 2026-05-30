@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=./schema.json
+---
+title: "Pasta Carbonara"
+category: "Italian"
+steps:
+  - "Boil pasta."
+  - "Fry pancetta."
+  - "Mix with eggs and cheese."
+images:
+  - "/images/carbonara.jpg"

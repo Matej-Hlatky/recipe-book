@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+  <title>Recipes</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+  <h1>Recipes</h1>
+  {{#categories}}
+  <h2>{{name}}</h2>
+  <ol>
+    {{#recipes}}
+    <li><a href="{{slug}}.html">{{title}}</a></li>
+    {{/recipes}}
+  </ol>
+  {{/categories}}
+</body>
+</html>

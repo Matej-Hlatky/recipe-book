@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=./schema.json
+---
+title: Palacinky
+category: Dezerty
+ingredients:
+  - 1/2 l mlieko
+  - 20 dkg hladká múka špeciál
+  - 2 vajcia
+  - 1 vanilkový cukor
+  - štipka soli
+steps:
+  - Všetko rozšľahať a cesto nechať 5 minút odpočívať.

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+  <title>{{title}}</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+  <h1>{{title}}</h1>
+  <h2>{{category}}</h2>
+
+  <h3>Suroviny</h3>
+  <ul>
+    {{#ingredients}}
+    <li>{{.}}</li>
+    {{/ingredients}}
+  </ul>
+
+  <h3>Postup</h3>
+  <ol>
+    {{#steps}}
+    <li>{{.}}</li>
+    {{/steps}}
+  </ol>
+</body>
+</html>
