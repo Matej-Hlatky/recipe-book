@@ -1,8 +1,0 @@
-# yaml-language-server: $schema=./schema.json
----
-title: "Pizza Margherita"
-category: "Italian"
-steps:
-  - "Prepare dough."
-  - "Spread tomato sauce."
-  - "Add mozzarella and bake."

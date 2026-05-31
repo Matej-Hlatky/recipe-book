@@ -2,10 +2,22 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:archive/archive.dart';
+import 'package:collection/collection.dart';
+import 'package:intl/intl.dart';
 import 'package:mustache_template/mustache_template.dart';
-import '../models/recipe.dart';
 
+import '../models/recipe.dart';
+import '../rendering/renderer.dart';
+
+/// ePub packer.
+///
+/// See: <https://www.w3.org/TR/epub/>
 class EpubPacker {
+  static final _iso8601 = DateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+  static const _uuid = '550e8400-e29b-41d4-a716-446655440000';
+  static const _title = 'Recepty';
+  static const _language = 'sk';
+
   static final _opf = Template(
     File('templates/content.opf.mustache').readAsStringSync(),
     htmlEscapeValues: true,
@@ -16,47 +28,103 @@ class EpubPacker {
     htmlEscapeValues: true,
   );
 
-  static const _containerXml = '<?xml version="1.0" encoding="UTF-8"?>\n'
-      '<container version="1.0" xmlns="urn:oasis:schemas:container">\n'
-      '  <rootfiles>\n'
-      '    <rootfile full-path="OEBPS/content.opf"'
-      ' media-type="application/oebps-package+xml"/>\n'
-      '  </rootfiles>\n'
-      '</container>\n';
+  static final _containerXml = File(
+    'templates/container.xml',
+  ).readAsStringSync();
 
-  static void pack(List<Recipe> recipes, String outputPath) {
-    final archive = Archive();
+  final File outputFile;
+  final _archive = Archive();
 
+  EpubPacker(this.outputFile);
+
+  void pack({
+    required List<Recipe> recipes,
+    required DateTime modifiedAt,
+    required String commitHash,
+  }) {
     // mimetype must be first and stored uncompressed
     final mimetypeBytes = utf8.encode('application/epub+zip');
-    final mimetype = ArchiveFile('mimetype', mimetypeBytes.length, mimetypeBytes);
+    final mimetype = ArchiveFile(
+      'mimetype',
+      mimetypeBytes.length,
+      mimetypeBytes,
+    );
     mimetype.compress = false;
-    archive.addFile(mimetype);
+    _archive.addFile(mimetype);
 
-    _addText(archive, 'META-INF/container.xml', _containerXml);
+    _addText('META-INF/container.xml', _containerXml);
 
-    final recipesData = [
-      for (final r in recipes) {'slug': r.slug, 'title': r.title},
-    ];
-    _addText(archive, 'OEBPS/content.opf', _opf.renderString({'recipes': recipesData}));
+    {
+      final data = {
+        'title': _title,
+        'language': _language,
+        'uuid': _uuid,
+        'modifiedAt': _formatDateTime(modifiedAt),
+        'recipes': [
+          for (final r in recipes)
+            {
+              'slug': r.slug,
+              'title': r.title,
+            },
+        ],
+      };
 
-    final ncxData = [
-      for (var i = 0; i < recipes.length; i++)
-        {'slug': recipes[i].slug, 'title': recipes[i].title, 'playOrder': i + 3},
-    ];
-    _addText(archive, 'OEBPS/toc.ncx', _ncx.renderString({'recipes': ncxData}));
-
-    for (final file in Directory('build').listSync().whereType<File>()) {
-      final name = file.uri.pathSegments.last;
-      final bytes = file.readAsBytesSync();
-      archive.addFile(ArchiveFile('OEBPS/$name', bytes.length, bytes));
+      _addText('OEBPS/content.opf', _opf.renderString(data));
     }
 
-    File(outputPath).writeAsBytesSync(ZipEncoder().encode(archive)!);
+    {
+      final grouped = groupBy(recipes, (r) => r.category);
+      var playOrder = 3;
+      final data = {
+        'categories': [
+          for (final entry in grouped.entries.sortedBy((e) => e.key))
+            () {
+              final categoryPlayOrder = playOrder++;
+              return {
+                'name': entry.key,
+                'categoryId': entry.key.toLowerCase().replaceAll(' ', '-'),
+                'playOrder': categoryPlayOrder,
+                'recipes': [
+                  for (final r in entry.value)
+                    {
+                      'slug': r.slug,
+                      'title': r.title,
+                      'playOrder': playOrder++,
+                    },
+                ],
+              };
+            }(),
+        ],
+      };
+
+      _addText('OEBPS/toc.ncx', _ncx.renderString(data));
+    }
+
+    _addText('OEBPS/cover.html', Renderer.renderCover());
+    _addText(
+      'OEBPS/toc.html',
+      Renderer.renderToc(recipes,
+          generatedAt: modifiedAt, commitHash: commitHash),
+    );
+    for (final recipe in recipes) {
+      _addText('OEBPS/${recipe.slug}.html', Renderer.renderRecipe(recipe));
+    }
+
+    _addBytes('OEBPS/style.css', File('assets/style.css').readAsBytesSync());
+    _addBytes('OEBPS/cover.png', File('assets/cover.png').readAsBytesSync());
+
+    outputFile.writeAsBytesSync(ZipEncoder().encode(_archive)!);
   }
 
-  static void _addText(Archive archive, String path, String content) {
+  void _addText(String path, String content) {
     final bytes = utf8.encode(content);
-    archive.addFile(ArchiveFile(path, bytes.length, bytes));
+
+    _archive.addFile(ArchiveFile(path, bytes.length, bytes));
   }
+
+  void _addBytes(String path, List<int> bytes) {
+    _archive.addFile(ArchiveFile(path, bytes.length, bytes));
+  }
+
+  static String _formatDateTime(DateTime dt) => _iso8601.format(dt.toUtc());
 }

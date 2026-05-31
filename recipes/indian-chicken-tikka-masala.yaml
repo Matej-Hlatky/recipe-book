@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=./schema.json
 ---
 title: Chicken Tikka Masala
-category: Indian
+category: India
 steps:
   - prepare
   - cook

@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=./schema.json
 ---
-title: "Pasta Carbonara"
-category: "Italian"
+title: Carbonara
+category: Talianská
 steps:
   - "Boil pasta."
   - "Fry pancetta."

@@ -3,11 +3,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
   <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-  <title>Recipes</title>
+  <title>Recepty</title>
   <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 <body>
-  <h1>Recipes</h1>
+  <h1>Recepty</h1>
   {{#categories}}
   <h2>{{name}}</h2>
   <ol>
@@ -16,5 +16,8 @@
     {{/recipes}}
   </ol>
   {{/categories}}
+  <footer>
+    <small>{{generatedAt}} · {{commitHash}}</small>
+  </footer>
 </body>
 </html>
