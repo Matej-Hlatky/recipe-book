@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=./schema.json
+---
+title: Krémová tekvicová polievka
+category: Polievky
+ingredients:
+  - 1 kg tekvice Hokkaido
+  - 1 mrkva
+  - 1 cibuľa
+  - 2 strúčiky cesnaku
+  - 2 lyžice olivového oleja
+  - 3 poháre kuracieho vývaru
+  - soľ
+  - čierne korenie
+steps:
+  - Tekvicu ošúpať, odstrániť semienka, nakrájať na kúsky.
+  - Mrkvu, cibuľu a cesnak ošúpať a nakrájať na menšie kúsky.
+  - Všetky prísady restovať v hrnci na troche olivového oleja asi 3 minúty.
+  - Potom zeleninu zaliať vývarom a variť pod pokrievkou domäkka.
+  - Na záver polievku rozmixovať dohladka a ochutiť soľou a mletým čiernym korením.

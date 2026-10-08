@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=./schema.json
+---
+title: Bábovka
+category: Koláče
+ingredients:
+  - maslo 125g
+  - vanilkový cukor 2ks
+  - žĺtka 3
+  - práškový cukor 250g
+  - prášok do pečiva 1ks
+  - hladká múka 250g
+  - mlieko 200ml
+  - hrozienka 100g
+  - kakao
+steps:
+  Príprava:
+    - Pripraviť sneh z bielok.
+    - Vymiešať - maslo, vanilkové cukre, žĺtka a práškový cukor.
+    - Pridať prášok do pečiva, hladkú múku, mlieko, hrozienka a sneh.
+    - Do ½ masy pridať lyžicu kakaa.
+    - Striedavo dať do vymastenej a múkou vysypanej formy.
+  Pečenie:
+    - Pod formu dať menší pekáč.
+    - Piecť v spodnej časti rúry.
+    - Piecť pri 180°, 50-60min.

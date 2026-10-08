@@ -1,0 +1,33 @@
+<h1>{{title}}</h1>
+
+<h2>Suroviny</h2>
+{{#ingredients}}
+{{#name}}<h3>{{name}}</h3>{{/name}}
+<ul>
+  {{#items}}
+  <li>{{.}}</li>
+  {{/items}}
+</ul>
+{{/ingredients}}
+
+<h2>Postup</h2>
+{{#steps}}
+{{#name}}<h3>{{name}}</h3>{{/name}}
+<ol>
+  {{#items}}
+  <li>{{.}}</li>
+  {{/items}}
+</ol>
+{{/steps}}
+
+{{#hasFooter}}
+<hr />
+<div class="notes">
+  {{#notes}}
+  <p><em>{{.}}</em></p>
+  {{/notes}}
+  {{#source}}
+  <p>Zdroj: {{#sourceIsUrl}}<a href="{{source}}">{{source}}</a>{{/sourceIsUrl}}{{^sourceIsUrl}}{{source}}{{/sourceIsUrl}}</p>
+  {{/source}}
+</div>
+{{/hasFooter}}

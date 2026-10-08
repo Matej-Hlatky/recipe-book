@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=./schema.json
+---
+title: Koláč s lesným ovocím
+category: Koláče
+ingredients:
+  - 166g kryštálový hnedý cukor
+  - 200g hrubá múka (nie iná!)
+  - 2 vajcia
+  - 8g prášok do pečiva
+  - 133ml mlieko
+  - 80g maslo
+  - 500g mrazené lesné ovocie (napr. KLC Berry Mix 750g)
+steps:
+  Príprava:
+    - Maslo dať rozpustiť.
+    - Mraz. ovocie dať do sita na špagety a pod teplou vodou rozmraziť a vodu odkvapkať!
+    - Bielka oddeliť od žĺtok a spraviť sneh.
+    - V mise mixérom všetko okrem ovocia a snehu zmiešať.
+    - Jemne varechou primiešať sneh.
+    - Vyliať do pekáča, utrepať a zarovnať.
+    - Na vrch dať lesné ovocie a to rukou / lopatkou jemne vtlačiť dnu do cesta a zarovnať.
+  Pečenie:
+    - Piecť pri 190°C spodný a horný ohrev, v spodnej časti, 25min.
+notes:
+  - Koláč je dosť šťavnatý a kyselý - je možné vymeniť časť lesného ovocia za nakrájané jahody.
+  - "Forma: pekáč na lasagne 28×22cm = výška koláča 3cm (https://eshop.tescoma.sk/plech-na-pecenie-hlboky-delicia-31x24-cm)."

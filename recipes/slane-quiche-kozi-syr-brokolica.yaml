@@ -1,0 +1,41 @@
+# yaml-language-server: $schema=./schema.json
+---
+title: Quiche s kozím syrom a brokolicou
+category: Slané pečivo
+ingredients:
+  Krehké cesto:
+    - 250g hladká múka
+    - 125g maslo
+    - 1 vajce
+    - 50ml voda
+    - soľ
+    - šošovica / ryža / fazuľa na zaťaženie cesta
+  Plnka:
+    - 200g čerstvý kozí syr
+    - 200g brokolica
+    - 100g sušené paradajky v oleji
+    - 150ml smotana na šľahanie 33%
+    - 150ml mlieko
+    - 3 vajcia
+    - 2 žĺtky
+    - soľ
+    - čierne mleté korenie
+steps:
+  Krehké cesto:
+    - Z múky, masla, celého vajca, soli a vody vypracovať hladké cesto.
+    - Cesto zabaliť do potravinovej fólie a odložiť na celú noc do chladničky (ideálne na 24 hodín).
+    - 20 minút pred prípravou koláča cesto vybrať z chladničky, aby zmäklo a ľahšie sa s ním pracovalo. Cesto vyvaľkať na doske posypanej múkou a vložiť do okrúhlej formy na pečenie.
+    - Cesto poprepichovať vidličkou, aby z neho počas pečenia mohla unikať para. Cesto, ktoré presahuje okraje formy, neodrezať.
+    - Na cesto položiť papier na pečenie a nasypať naň šošovicu tak, aby zakrývala celú plochu (cesto si tak počas pečenia zachová svoj tvar). Cesto piecť vo vyhriatej rúre pri 160 °C približne 35 – 40 minút.
+    - Z upečeného korpusu odstrániť papier na pečenie so šošovicou a opatrne zrezať prečnievajúce okraje.
+  Plnka:
+    - V miske zmiešať smotanu, mlieko, 3 celé vajcia a 2 žĺtky. Ochutiť soľou, čiernym korením a dôkladne premiešať.
+    - Ružičky brokolice uvariť vo vriacej osolenej vode do polomäkka. Brokolicu scediť a dôkladne osušiť utierkami. Osušené ružičky nakrájať na menšie kúsky.
+    - Sušené paradajky scediť, osušiť a nakrájať na menšie kúsky.
+    - Brokolicu a paradajky poukladať rovnomerne na upečený korpus, navrch poukladať kozí syr.
+    - Preliať smotanovo-vajíčkovou zmesou.
+  Pečenie:
+    - Quiche piecť vo vyhriatej rúre pri 160 °C približne 35 – 40 minút.
+  Servírovanie:
+    - Upečený slaný koláč servírovať vychladnutý.
+source: https://kuchynalidla.sk/recepty/quiche-s-kozim-syrom-a-brokolicou

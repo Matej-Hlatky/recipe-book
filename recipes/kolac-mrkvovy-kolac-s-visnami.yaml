@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=./schema.json
+---
+title: Mrkvový koláč s višňami
+category: Koláče
+ingredients:
+  Cesto:
+    - 7dl višňový kompót bez kôstok (po odkvapkaní 350g)
+    - 250 g mrkvy
+    - 180g hladkej múky
+    - 70 g detskej krupice
+    - 100 g olúpaných mletých mandlí
+    - 1 zarovnaná KL mletej škorice
+    - 100 g cukru
+    - 3 zarovnané KL kypriaceho prášku do pečiva
+    - nastrúhaná kôra z 1 chemicky neošetreného citróna
+    - 3 vajcia
+    - 200 g zmäknutého masla alebo margarínu
+  Ozdobenie:
+    - 100 g práškového cukru
+    - 1-2 PL višňovej (citrónovej) šťavy
+steps:
+  Príprava:
+    - Na prípravu cesta nechať višne odkvapkať na sitku. Mrkvu umyť, ošúpať a nastrúhať najemno.
+    - V mise zmiešať múku, kypriaci prášok, krupicu, škoricu a mandle. Pridať strúhanú mrkvu, citrónovú kôru, cukor, vajcia a maslo a spracovať elektrickým ručným šľahačom najskôr krátko na najnižšom, potom na najvyššom stupni dohladka. Nakoniec ručne vmiešať višne.
+    - Cesto rozotrieť na vymastený a múkou vysypaný plech a uhladiť.
+  Pečenie:
+    - Plech vložiť do rúry a piecť (elektrická rúra 180°C / ~ 30 min).
+  Zdobenie:
+    - Zmiešať práškový cukor so šťavou, aby vznikla hustá poleva.
+    - Polevu naplniť do mikroténového vrecka, odstrihnúť rožtek a horúci koláč ozdobiť.

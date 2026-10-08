@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=./schema.json
+---
+title: Banánový chlieb
+category: Koláče
+ingredients:
+  - 3 - 4 ks  banány prezreté
+  - 3/4 šálky cukor hnedý
+  - 1,5 šálky múka polohrubá
+  - 1 ČL      sóda bikarbóna
+  - 1 ks      vajce čerstvé celé veľké
+  - 50 g      maslo rozpustené
+  - 100 g     orechy posekané
+steps:
+  Príprava:
+    - Banány ošúpať a dať ich do misy. Popučiť vidličkou.
+    - Pridať cukor, vajíčko a dobre premiešať.
+    - Pridať preosiatu múku zmiešanú so sóda bicarbonou. Dobre premiešať, aby v ceste neboli hrčky.
+    - Pridať rozpustené, vychladené maslo a nakoniec nadrobno posekané orechy.
+    - Vyliať do pozdĺžnej formy vyloženej papierom na pečenie.
+  Pečenie:
+    - Piecť pri teplote 175 stupňov C asi 55-60 minút.
+    - Skontrolovať špajlou. Múčnik nechať dobre vychladnúť a jemne poprášiť práškovým cukrom.
+notes:
+  - Forma 30x11x6cm.
+source: https://varecha.pravda.sk/recepty/bananovy-chlieb/54528-recept.html

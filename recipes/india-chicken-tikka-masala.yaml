@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=./schema.json
+---
+title: Chicken Tikka Masala
+category: India
+ingredients:
+  - 1 kg kuracích pŕs
+  - 250g bieleho jogurtu
+  - 250g smotany
+  - 13ks paradajok
+  - 10 strúčikov cesnaku
+  - čerstvý zázvor - množstvo ako cesnaku
+  - 1/2 ČL kurkumy
+  - 1PL citr. šťavy
+  - rastlinný olej
+  - 5 cibúľ
+  - 5 paprík rôznych farieb
+  - 1PL mletej sladkej papriky
+  - 1 ČL korenia tandoori masala
+  - 1 ČL korenia garam masala
+  - soľ
+steps:
+  - Kuracie prsia nakrájať na kocky. Marinovať ich v zmesi jogurtu, citrónovej šťavy a soli.
+  - Piecť 15 minút v rozohriatej rúre pri teplote 180 stupňov.
+  - Nakrájanú cibuľu dohneda orestovať na panvici, pridať najemno nastrúhaný cesnak so zázvorom, kurkumu, garam masala, tandoori korenie, mletú sladkú papriku a chvíľu ešte restovať.
+  - Potom pridať nadrobno nakrájané rajčiny a variť približne 10 minút.
+  - Následne pridať nakrájané papriky, smotanu, kuracie prsia, kashmiri chilli, koriander a povariť ešte 5 minút.
+notes:
+  - "Počet porcií: 10"
+  - "Doba prípravy: 30 minút"
+source: Chefparade kurz varenia - Domáca indická kuchyňa

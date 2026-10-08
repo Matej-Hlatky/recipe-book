@@ -14,19 +14,61 @@
       "description": "Cuisine or category (e.g. Italian, Indian)"
     },
     "ingredients": {
+      "description": "List of ingredients, or a map of section name to list",
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "object",
+          "description": "Named sections (e.g. dough, topping), in display order",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "steps": {
+      "description": "Ordered list of preparation steps, or a map of section name to list",
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        {
+          "type": "object",
+          "description": "Named sections (e.g. dough, topping), in display order",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          }
+        }
+      ]
+    },
+    "notes": {
       "type": "array",
-      "description": "List of ingredients",
+      "description": "Optional notes shown below the recipe (tips, dish size, servings)",
       "items": {
         "type": "string"
       }
     },
-    "steps": {
-      "type": "array",
-      "description": "Ordered list of preparation steps",
-      "minItems": 1,
-      "items": {
-        "type": "string"
-      }
+    "source": {
+      "type": "string",
+      "description": "Where the recipe comes from, preferably a URL"
     },
     "images": {
       "type": "array",

@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=./schema.json
+---
+title: Mango lassi - indický jogurtový nápoj
+category: India
+ingredients:
+  - 300g mangovej drene
+  - 1kg bieleho jogurtu
+  - 100g cukru
+  - rozdrvený kardamom podľa chuti
+steps:
+  - Všetky ingrediencie vhodiť do mixéra a poriadne rozmixovať.
+  - Ak je zmes veľmi hustá, zriediť ju trochou vody.
+notes:
+  - "Počet porcií: 10"
+  - "Doba prípravy: 10 minút"
+source: Chefparade kurz varenia - Domáca indická kuchyňa

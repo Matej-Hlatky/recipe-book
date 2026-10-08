@@ -1,7 +1,7 @@
 - [x] Define YAML structure for a single recipe
 - [x] Script to parse yaml files into a data structure
 - [x] Build TOC based on `category`
-- [ ] Add few real recipes
+- [x] Add few real recipes
 - [ ] Styling - basic text formatting
 - [x] Archive as ZIP with ePub metadata
 - [ ] Support more attributes and details (`tags`, `prepTime`, `complexity`, `accessories`)

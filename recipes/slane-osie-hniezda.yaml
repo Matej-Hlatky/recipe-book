@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=./schema.json
+---
+title: Osie hniezda
+category: Koláče
+ingredients:
+  Cesto:
+    - 500g hladká múka
+    - 3 vajcia
+    - 20dg droždie
+    - 60g hera (rozpustiť)
+    - 2dl mlieko
+    - 3pl cukor
+    - trochu soli
+  Plnka:
+    - 100g maslo
+    - 1pl cukru
+    - škorica
+    - hrozienka (namočiť)
+  Poter:
+    - 2dl mlieka
+    - 1 vanilkový cukor
+    - 3pl cukru
+steps:
+  Príprava:
+    - Spraviť plnku a cesto; rozdeliť na dva diely.
+  Pečenie:
+    - Piecť 10min pri 180°C.
+    - Prepečené potrieť poterom.
+    - Piecť ďalších 5min.

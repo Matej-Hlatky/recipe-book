@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=./schema.json
+---
+title: Šošovicová karí polievka
+category: Polievky
+ingredients:
+  - olej
+  - cibuľa
+  - 4 strúčiky cesnaku
+  - 1 polievková lyžica karí pasty
+  - 250g červená šošovica
+  - 250g mrazená zeleninová zmes
+  - 250g mrazený špenát
+  - 1L zeleninový vývar
+  - "voliteľné: jogurt, kešu oriešky"
+steps:
+  - Vo veľkej panvici rozohriať 2 lyžice oleja a pridať cibuľu pokrájanú nadrobno, pražiť 3 minúty alebo domäkka.
+  - Pridať roztlačený cesnak a pražiť dozlatista.
+  - Pridať karí pastu a chvíľku pražiť.
+  - Pridať červenú šošovicu, mrazenú zeleninovú zmes, mrazený špenát a zeleninový vývar, variť 10 minút.
+  - Ozdobiť jogurtom a orieškami kešu.

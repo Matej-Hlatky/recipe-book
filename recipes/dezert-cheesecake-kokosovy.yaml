@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=./schema.json
+---
+title: Kokosový cheesecake s čokoládou a malinami
+category: Dezerty
+ingredients:
+  Korpus:
+    - 250g maslové sušienky (188g)
+    - 120g maslo (1g)
+  Plnka:
+    - 500g mascarpone (15g)
+    - 130g kyslá smotana 16 % (5g)
+    - 180g brezový cukor
+    - 100g strúhaný kokos (22g)
+    - 3 vajíčka (1g)
+    - 1 žĺtok
+  Toping:
+    - 80g tmavá čokoláda (27g)
+    - 125g maliny (17g)
+    - maslo
+steps:
+  Korpus:
+    - Maslové sušienky rozmixovať v sekacom mixéri. Rukami ich zmiešať so zmäknutým maslom a vypracovať cesto.
+    - Okrúhlu tortovú formu 28cm vyložiť papierom na pečenie. Sušienkové cesto natlačiť na dno tortovej formy a vytvarovať cca. 2 - 3 cm okraje.
+    - Piecť v rúre 10-12 minút pri 180°C, až kým sú okraje korpusu hnedé.
+  Plnka:
+    - Šľahacím mixérom pri nízkych otáčkach dohladka vyšľahať mascarpone s kyslou smotanou a práškovým cukrom.
+    - Potom postupne po jednom za stáleho šľahania pridať 3 celé vajíčka, 1 žĺtok a strúhaný kokos. Dôkladne premiešať.
+    - Krém vyliať na predpečený korpus.
+  Pečenie:
+    - Piecť v rúre vyhriatej na 180°C 10-15 minút. Potom teplotu znížiť na 150°C a piecť ešte 40 minút.
+    - Hotový cheesecake má byť pevný pri krajoch a v strede polotuhý.
+    - Ešte horúci cheesecake nožom oddeliť od okrajov formy, aby sa počas chladnutia nenalepil na steny formy a nepopraskal.
+    - Cheesecake vybrať z formy až keď úplne vychladne, aby plnka nevytiekla.
+notes:
+  - Čísla v zátvorkách pri surovinách sú sacharidy; spolu 276g sacharidov / 17g porcia.

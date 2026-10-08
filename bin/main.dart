@@ -1,8 +1,7 @@
 import 'dart:io';
 
 import 'package:recipe_book/epub/epub_packer.dart';
-import 'package:recipe_book/models/recipe.dart';
-import 'package:yaml/yaml.dart';
+import 'package:recipe_book/recipe_loader.dart';
 
 void main() {
   final buildDir = Directory('build');
@@ -11,15 +10,7 @@ void main() {
   final now = DateTime.now();
   final commitHash = _gitCommitHash();
 
-  final recipes = Directory('recipes')
-      .listSync()
-      .whereType<File>()
-      .where((File it) => it.path.endsWith('.yaml'))
-      .map((File it) => Recipe.fromYaml(
-            it.uri.pathSegments.last.replaceAll('.yaml', ''),
-            loadYaml(it.readAsStringSync()) as Map,
-          ))
-      .toList();
+  final recipes = loadRecipes(Directory('recipes'));
 
   EpubPacker(File('build/recipes.epub')).pack(
     recipes: recipes,

@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=./schema.json
+---
+title: Tiramisu z Mascarpone a vajec
+category: Dezerty
+ingredients:
+  - 500g Mascarpone
+  - 200g ladyfingers (2 balíčky po 12ks)
+  - 120g cukor
+  - 6ks vajcia
+  - espresso káva
+  - horká čokoláda
+  - amaretto
+  - kakao prášok
+steps:
+  Príprava:
+    - Pripraviť kávu.
+    - Žĺtka s ½ cukru vymiešať, pridať Mascarpone, zmiešať.
+    - Z bielok a ½ cukru spraviť ručne sneh a následne primiešať k žĺtkam s Mascarpone.
+  Ukladanie:
+    - Dať vrstvu mascarpone.
+    - Lady fingers vymočiť z oboch strán v káve (max 1s, inak sa moc napijú a následne rozpadajú) a uložiť.
+    - Pokvapkať amaretto.
+    - Dať vrstvu mascarpone.
+    - Voliteľne posypať čokoládou (strúhanou, sekanou).
+    - Uložiť lady fingers kolmo voči predošlému smeru.
+    - Dať vrstvu mascarpone.
+  Dokončenie:
+    - Dať do chladničky na min. 2h, ale ideálne cez noc; nezatvárať, inak by na vrchnáku skondenzovala voda.
+    - Pred servírovaním vrch posypať kakaom cez sitko.
+notes:
+  - Celá dávka by mala ísť do misy s rozmermi asi 32×20 (https://www.ikea.com/sk/sk/p/ikea-365-zapekacia-misa-biela-90286734/).
+  - Polovičná dávka sa presne zmestí do IKEA sklenenej dózy 1l (21×15×7cm), ale až do hora, takže sa potom už nedá zavrieť deklom (https://www.ikea.com/sk/sk/p/ikea-365-doza-na-potraviny-s-vrchnakom-obdlznik-sklo-plast-s89269071/).
+source: https://youtu.be/c4-9rR-YxZk

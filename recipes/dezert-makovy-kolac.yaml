@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=./schema.json
+---
+title: Makový koláč s makovou posýpkou
+category: Dezerty
+ingredients:
+  Cesto:
+    - 2 ks 	vajce
+    - 70 g 	kryštálový cukor
+    - 1 PL 	kokosový olej (alebo maslo)
+    - 100 g	múka špaldová hladká
+    - 50 g 	mletý mak
+    - 1 dl  	mlieko
+    - 1 KL 	kypriaci prášok do pečiva
+    - 2 ks 	jablko
+  Posýpka:
+    - 50 g 	mletý mak (toto je veľa; stačí asi polovica)
+    - 1 ks 	vanilkový cukor
+steps:
+  Príprava:
+    - Celé vajcia vyšľahať s cukrom do peny.
+    - Pridať roztopený kokosový olej a mlieko.
+    - K vyšľahaným vajciam s cukrom primiešať múku s práškom do pečiva a makom.
+    - Cesto vyliať do formy a urovnať.
+    - Jablká nastrúhať nahrubo a poukladať na cesto.
+    - Mak na posýpku zmiešať s vanilkovým cukrom a posypať ním vrch koláča.
+  Pečenie:
+    - Piecť pri teplote 180 stupňov <40 minút v spodnej časti rúry.
