@@ -1,0 +1,53 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    # Manual runs from other branches must not create releases.
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: dart-lang/setup-dart@v1
+
+      - run: dart pub get
+
+      - run: dart run bin/main.dart
+
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BEFORE: ${{ github.event.before }}
+        run: |
+          # Previous main commit: the pushed range start, or the parent commit
+          # for manual runs and new branches.
+          if [ -z "$BEFORE" ] || ! git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+            BEFORE=$(git rev-parse HEAD^)
+          fi
+
+          now=$(TZ=Europe/Bratislava date '+%Y-%m-%d %H:%M')
+          tag=$(echo "$now" | tr ' :' '_-')
+
+          cp build/recipes.epub "recepty-$tag.epub"
+          dart run bin/release_notes.dart "$BEFORE" "$GITHUB_SHA" \
+            "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" > notes.md
+
+          gh release create "$tag" "recepty-$tag.epub" \
+            --title "Recepty $now" \
+            --notes-file notes.md \
+            --target "$GITHUB_SHA"

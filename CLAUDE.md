@@ -1,15 +1,43 @@
 # Recipe Book
 
-Dart scripts that build a Slovak cookbook (`build/recipes.epub`) from the YAML files in `recipes/`.
+Dart scripts that build a Slovak cookbook from the YAML recipes in `recipes/`: an ePub (`build/recipes.epub`) and one self-contained HTML file per recipe (`build/html/`).
 
-- Build ePub: `dart run bin/main.dart`
-- Build HTML: `dart run bin/html.dart` (one self-contained file per recipe in `build/html/`, named after its YAML file)
-- Test: `dart test` (CI runs `dart analyze` and `dart test` on every push)
+## Commands
+
+Run from the repository root (templates and assets are loaded by relative path).
+
+- `dart run bin/main.dart` – build the ePub
+- `dart run bin/html.dart` – build `build/html/<recipe-file-name>.html`, CSS inlined
+- `dart run bin/release_notes.dart <from> <to> [repoUrl]` – print release notes for a commit range
+- `dart analyze` and `dart test` – both must pass before committing
+
+## Code map
+
+- `lib/models/recipe.dart` – `Recipe` and `Section`, parsing and validation of one YAML file
+- `lib/recipe_loader.dart` – loads `recipes/*.yaml`, sorted by file name; the file name is the slug
+- `lib/rendering/renderer.dart` – Mustache rendering of recipe, cover and contents pages
+- `lib/epub/epub_packer.dart` – ePub archive (OPF, NCX, pages, assets)
+- `lib/release_notes.dart` – parses `git diff --name-status`, formats release notes
+- `templates/recipe_body.mustache` – recipe content shared by the ePub page (`recipe.html.mustache`) and the HTML page (`recipe.standalone.html.mustache`)
+- `recipes/schema.json` – JSON schema for recipe files; keep it in sync with `Recipe.fromYaml`
+
+## Workflow
+
+- Work on a feature branch; squash-merge it into `main`.
+- Write tests first (`test/` mirrors `lib/`).
+- CI: `test.yml` runs analyze and tests on every push; `build.yml` builds the ePub for PRs; `release.yml` runs on every push to `main` and creates a release tagged with the Bratislava date and time (e.g. `2026-10-08_21-36`), the ePub attached and notes since the previous `main` commit. All workflows can also be run manually; releases only from `main`.
+
+## Gotchas
+
+- Mustache HTML-escapes `/` as `&#x2F;`; that is valid, keep escaping on (URLs may contain `&`).
+- ePub pages use the XHTML 1.1 doctype, which allows only `xml:lang` (not `lang`).
+- Read git output as UTF-8 (`stdoutEncoding: utf8`), otherwise diacritics break on Windows.
 
 ## Recipe conventions
 
 - One recipe per file, validated by `recipes/schema.json`.
 - File names use a Slovak category prefix: `dezert-`, `kolac-`, `polievka-`, `priloha-`, `slane-`, `india-`, `sk-` (never English, e.g. `indian-`).
-- `ingredients` and `steps` are either a flat list or a map of section name to list (e.g. `Cesto`, `Posýpka`, `Pečenie`). Use sections instead of YAML comments for content that belongs in the book. The final baking goes into its own `Pečenie` steps section; pre-baking a part (e.g. a crust) stays in that part's section.
-- Write steps with **infinitives** (neurčitok), e.g. "Tekvicu ošúpať, odstrániť semienka, nakrájať na kúsky." — not "ošúpeme" (1st person plural) or "ošúpi" / "rozmixuj" (imperative).
+- Slovak text is written with full diacritics.
+- `ingredients` and `steps` are either a flat list or a map of section name to list (e.g. `Cesto`, `Posýpka`, `Pečenie`); a field can't mix both. Use sections instead of YAML comments for content that belongs in the book. The final baking goes into its own `Pečenie` steps section; pre-baking a part (e.g. a crust) stays in that part's section.
+- Write steps with **infinitives** (neurčitok), e.g. "Tekvicu ošúpať, odstrániť semienka, nakrájať na kúsky." – not "ošúpeme" (1st person plural) or "rozmixuj" (imperative).
 - Put remarks (tips, dish size, servings, prep time) into `notes`; they render in italics below a horizontal line. Put the origin into `source`, preferably a URL (rendered as a link). Don't use YAML comments for recipe content.
