@@ -10,8 +10,10 @@ class SiteBuilder {
   final Directory outDir;
 
   /// Deletes [outDir], then writes `index.html`, `<slug>.html` per recipe,
-  /// `style.css` (from `assets/site.css`), `favicon.svg` and `fonts/` (every file in
-  /// `assets/fonts/` except dotfiles, including the licence files).
+  /// `style.css` (from `assets/site.css`), `favicon.svg`,
+  /// `manifest.webmanifest`, `icons/`, `fonts/` (every file in
+  /// `assets/fonts/` except dotfiles, including the licence files) and
+  /// `sw.js`, which saves all of them for offline use.
   void build({
     required List<Recipe> recipes,
     required DateTime generatedAt,
@@ -34,11 +36,35 @@ class SiteBuilder {
 
     File('assets/site.css').copySync('${outDir.path}/style.css');
     File('assets/favicon.svg').copySync('${outDir.path}/favicon.svg');
-    final fontsDir = Directory('${outDir.path}/fonts')..createSync();
-    for (final font in Directory('assets/fonts').listSync().whereType<File>()) {
-      final name = font.uri.pathSegments.last;
-      if (name.startsWith('.')) continue;
-      font.copySync('${fontsDir.path}/$name');
+    File('assets/manifest.webmanifest')
+        .copySync('${outDir.path}/manifest.webmanifest');
+    _copyDir(Directory('assets/icons'), 'icons');
+    _copyDir(Directory('assets/fonts'), 'fonts');
+
+    // Written last, so it lists everything above.
+    File('${outDir.path}/sw.js').writeAsStringSync(
+      Renderer.renderServiceWorker(
+        version: '$commitHash-${generatedAt.millisecondsSinceEpoch}',
+        files: ['./', ..._builtFiles()],
+      ),
+    );
+  }
+
+  /// Copies every file in [source] except dotfiles into [name] in [outDir].
+  void _copyDir(Directory source, String name) {
+    final target = Directory('${outDir.path}/$name')..createSync();
+    for (final file in source.listSync().whereType<File>()) {
+      final fileName = file.uri.pathSegments.last;
+      if (fileName.startsWith('.')) continue;
+      file.copySync('${target.path}/$fileName');
     }
   }
+
+  /// Paths of all files in [outDir], relative to it, sorted.
+  List<String> _builtFiles() => outDir
+      .listSync(recursive: true)
+      .whereType<File>()
+      .map((f) => f.path.substring(outDir.path.length + 1))
+      .toList()
+    ..sort();
 }

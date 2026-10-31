@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:recipe_book/models/recipe.dart';
@@ -53,6 +54,53 @@ void main() {
       expect(File('${outDir.path}/fonts/$name').existsSync(), isTrue,
           reason: name);
     }
+  });
+
+  test('copies the app manifest and its icons', () {
+    build();
+
+    final manifest = jsonDecode(
+      File('${outDir.path}/manifest.webmanifest').readAsStringSync(),
+    ) as Map<String, dynamic>;
+    expect(manifest['start_url'], './');
+    expect(manifest['scope'], './');
+    expect(manifest['display'], 'standalone');
+    expect(manifest['lang'], 'sk');
+    final icons = manifest['icons'] as List;
+    expect(icons, isNotEmpty);
+    for (final icon in icons.cast<Map<String, dynamic>>()) {
+      expect(File('${outDir.path}/${icon['src']}').existsSync(), isTrue,
+          reason: icon['src'] as String);
+    }
+    expect(
+        File('${outDir.path}/icons/apple-touch-icon.png').existsSync(), isTrue);
+  });
+
+  test('service worker saves every built file for offline use', () {
+    build();
+
+    final js = File('${outDir.path}/sw.js').readAsStringSync();
+    final files = outDir
+        .listSync(recursive: true)
+        .whereType<File>()
+        .map((f) => f.path.substring(outDir.path.length + 1))
+        .where((path) => path != 'sw.js');
+    for (final path in files) {
+      expect(js, contains('"$path"'), reason: path);
+    }
+    expect(js, contains('"./"'));
+    expect(js, isNot(contains('"sw.js"')));
+  });
+
+  test('service worker version changes with every build', () {
+    build();
+
+    expect(
+      File('${outDir.path}/sw.js').readAsStringSync(),
+      contains(
+        "'recepty-abc1234-${DateTime(2026, 10, 31, 12).millisecondsSinceEpoch}'",
+      ),
+    );
   });
 
   test('copies the favicon', () {

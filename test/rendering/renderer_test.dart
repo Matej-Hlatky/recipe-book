@@ -223,6 +223,22 @@ void main() {
       expect(html, isNot(contains('<style>')));
     });
 
+    test('can be installed as an app', () {
+      final html = Renderer.renderSiteRecipe(recipe);
+
+      expect(html,
+          contains('<link rel="manifest" href="manifest.webmanifest" />'));
+      expect(html, contains('<meta name="theme-color" content="#fbf0c8" />'));
+      expect(
+        html,
+        contains(
+            '<link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />'),
+      );
+      expect(html, contains("navigator.serviceWorker.register('sw.js')"));
+      // Service workers need http(s); opening the files from disk skips it.
+      expect(html, contains("location.protocol !== 'file:'"));
+    });
+
     test('links the favicon', () {
       expect(
         Renderer.renderSiteRecipe(recipe),
@@ -451,6 +467,29 @@ void main() {
 
       expect(html, contains('<title>Koláč s ovocím</title>'));
       expect(html, contains('content="Koláč s ovocím"'));
+    });
+  });
+
+  group('Renderer.renderServiceWorker', () {
+    final js = Renderer.renderServiceWorker(
+      version: 'abc1234-1',
+      files: ['./', 'index.html', 'kolac-babovka.html'],
+    );
+
+    test('names its cache after the build version', () {
+      expect(js, contains("const CACHE = 'recepty-abc1234-1';"));
+    });
+
+    test('lists the files to save for offline use', () {
+      expect(
+        js,
+        contains('const FILES = ["./","index.html","kolac-babovka.html"];'),
+      );
+    });
+
+    test('fetches from the network first, cache as fallback', () {
+      expect(js, contains("fetch(request, { cache: 'no-cache' })"));
+      expect(js, contains('caches.match('));
     });
   });
 }

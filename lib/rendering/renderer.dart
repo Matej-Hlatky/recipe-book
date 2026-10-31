@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:collection/collection.dart';
@@ -32,6 +33,10 @@ class Renderer {
     File('templates/site/index.html.mustache').readAsStringSync(),
     htmlEscapeValues: true,
     partialResolver: _resolvePartial,
+  );
+  static final _serviceWorker = Template(
+    File('templates/site/sw.js.mustache').readAsStringSync(),
+    htmlEscapeValues: false,
   );
   static final _cover = Template(
     File('templates/cover.html.mustache').readAsStringSync(),
@@ -118,6 +123,18 @@ class Renderer {
 
     return parts;
   }
+
+  /// Renders the website's service worker, which saves [files] (paths
+  /// relative to the site root) for offline use under a cache named after
+  /// [version].
+  static String renderServiceWorker({
+    required String version,
+    required List<String> files,
+  }) =>
+      _serviceWorker.renderString({
+        'version': version,
+        'files': jsonEncode(files),
+      });
 
   static String renderToc(
     List<Recipe> recipes, {
