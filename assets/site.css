@@ -194,6 +194,19 @@ hr {
   color: #5a4a30;
 }
 
+/* Each note and the source start with a hanging dash, so entries are told
+   apart without a gap that would push text off the ruled lines. */
+.notes p {
+  position: relative;
+  padding-left: 18px;
+}
+
+.notes p::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+}
+
 .notes a {
   color: #8a3b1e;
   overflow-wrap: anywhere;
