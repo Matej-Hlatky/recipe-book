@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:mustache_template/mustache_template.dart';
 
 import '../models/recipe.dart';
+import 'typography.dart';
 
 class Renderer {
   static final _dateFormat = DateFormat('yyyy-MM-dd HH:mm');
@@ -65,8 +66,10 @@ class Renderer {
   static String renderSiteRecipe(Recipe recipe) =>
       _siteRecipe.renderString({..._recipeData(recipe), 'newTab': true});
 
+  /// Visible text gets [bindShortWords]; `pageTitle` and `description`
+  /// (browser tab, link previews) stay plain.
   static Map<String, Object?> _recipeData(Recipe recipe) => {
-        'title': recipe.title,
+        'title': bindShortWords(recipe.title),
         'ingredients': _sectionsData(recipe.ingredients),
         'category': recipe.category,
         'categoryId': categoryId(recipe.category),
@@ -75,7 +78,8 @@ class Renderer {
         'steps': _sectionsData(recipe.steps),
         'hasFooter': recipe.notes.isNotEmpty || recipe.source != null,
         'notes': [
-          for (final note in recipe.notes) {'parts': _linkParts(note)},
+          for (final note in recipe.notes)
+            {'parts': _linkParts(bindShortWords(note))},
         ],
         'source': recipe.source,
         'sourceIsUrl': recipe.source?.startsWith('http') ?? false,
@@ -83,7 +87,11 @@ class Renderer {
       };
 
   static List<Map<String, Object?>> _sectionsData(List<Section> sections) => [
-        for (final s in sections) {'name': s.name, 'items': s.items},
+        for (final s in sections)
+          {
+            'name': s.name == null ? null : bindShortWords(s.name!),
+            'items': s.items.map(bindShortWords).toList(),
+          },
       ];
 
   // Stops before brackets and whitespace; trailing punctuation is trimmed
@@ -147,7 +155,8 @@ class Renderer {
             'name': entry.key,
             'id': categoryId(entry.key),
             'recipes': [
-              for (final r in entry.value) {'slug': r.slug, 'title': r.title},
+              for (final r in entry.value)
+                {'slug': r.slug, 'title': bindShortWords(r.title)},
             ],
           },
       ],

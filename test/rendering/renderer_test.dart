@@ -10,8 +10,12 @@ void main() {
           slug: 'halusky',
           title: 'Halušky',
           category: 'Prílohy',
-          ingredients: [Section(items: ['múka'])],
-          steps: [Section(items: ['Uvariť.'])],
+          ingredients: [
+            Section(items: ['múka'])
+          ],
+          steps: [
+            Section(items: ['Uvariť.'])
+          ],
         ),
       );
 
@@ -48,7 +52,7 @@ void main() {
       );
 
       expect(html, contains('<hr'));
-      expect(html, contains('<em>Cez noc v chladničke.</em>'));
+      expect(html, contains('<em>Cez noc v chladničke.</em>'));
       expect(html.indexOf('<hr'), lessThan(html.indexOf('Cez noc')));
     });
 
@@ -128,8 +132,12 @@ void main() {
         slug: 'kolac',
         title: 'Koláč',
         category: 'Koláče',
-        ingredients: [Section(items: ['múka'])],
-        steps: [Section(items: ['Piecť.'])],
+        ingredients: [
+          Section(items: ['múka'])
+        ],
+        steps: [
+          Section(items: ['Piecť.'])
+        ],
       );
 
       final html = Renderer.renderRecipe(recipe);
@@ -174,8 +182,12 @@ void main() {
       slug: 'kolac',
       title: 'Koláč',
       category: 'Slané pečivo',
-      ingredients: [Section(name: 'Cesto', items: ['múka'])],
-      steps: [Section(items: ['Piecť.'])],
+      ingredients: [
+        Section(name: 'Cesto', items: ['múka'])
+      ],
+      steps: [
+        Section(items: ['Piecť.'])
+      ],
       notes: ['Cez noc.'],
       source: 'Babka',
     );
@@ -262,8 +274,12 @@ void main() {
           slug: 'chlieb',
           title: 'Chlieb & "maslo"',
           category: 'Pečivo',
-          ingredients: [Section(items: ['múka'])],
-          steps: [Section(items: ['Piecť.'])],
+          ingredients: [
+            Section(items: ['múka'])
+          ],
+          steps: [
+            Section(items: ['Piecť.'])
+          ],
         ),
       );
 
@@ -293,22 +309,34 @@ void main() {
         slug: 'kolac-babovka',
         title: 'Bábovka',
         category: 'Koláče',
-        ingredients: [Section(items: ['múka'])],
-        steps: [Section(items: ['Upiecť.'])],
+        ingredients: [
+          Section(items: ['múka'])
+        ],
+        steps: [
+          Section(items: ['Upiecť.'])
+        ],
       ),
       Recipe(
         slug: 'slane-osie-hniezda',
         title: 'Osie hniezda',
         category: 'Slané pečivo',
-        ingredients: [Section(items: ['múka'])],
-        steps: [Section(items: ['Upiecť.'])],
+        ingredients: [
+          Section(items: ['múka'])
+        ],
+        steps: [
+          Section(items: ['Upiecť.'])
+        ],
       ),
       Recipe(
         slug: 'dezert-palacinky',
         title: 'Palacinky',
         category: 'Dezerty',
-        ingredients: [Section(items: ['múka'])],
-        steps: [Section(items: ['Usmažiť.'])],
+        ingredients: [
+          Section(items: ['múka'])
+        ],
+        steps: [
+          Section(items: ['Usmažiť.'])
+        ],
       ),
     ];
 
@@ -371,6 +399,58 @@ void main() {
 
       expect(html, isNot(contains('href="/')));
       expect(html, isNot(contains('http')));
+    });
+  });
+
+  group('short words stay with the next word', () {
+    const nbsp = ' ';
+    const recipe = Recipe(
+      slug: 'kolac',
+      title: 'Koláč s ovocím',
+      category: 'Koláče',
+      ingredients: [
+        Section(name: 'Na cesto', items: ['múka na posypanie']),
+      ],
+      steps: [
+        Section(items: ['Dať do rúry.']),
+      ],
+      notes: ['Podávať s cukrom, pozri na https://example.sk/a.'],
+    );
+
+    for (final (name, render) in [
+      ('ePub', Renderer.renderRecipe),
+      ('site', Renderer.renderSiteRecipe),
+    ]) {
+      test('in the $name recipe page', () {
+        final html = render(recipe).replaceAll('&#x2F;', '/');
+
+        expect(html, contains('<h1>Koláč s${nbsp}ovocím</h1>'));
+        expect(html, contains('<h3>Na${nbsp}cesto</h3>'));
+        expect(html, contains('múka na${nbsp}posypanie'));
+        expect(html, contains('Dať do${nbsp}rúry.'));
+        expect(
+            html,
+            contains(
+                's${nbsp}cukrom, pozri na$nbsp<a href="https://example.sk/a"'));
+        expect(html, isNot(contains('&nbsp;')));
+      });
+    }
+
+    test('in the contents page', () {
+      final html = Renderer.renderSiteIndex(
+        [recipe],
+        generatedAt: DateTime.utc(2026),
+        commitHash: 'abc1234',
+      );
+
+      expect(html, contains('<a href="kolac.html">Koláč s${nbsp}ovocím</a>'));
+    });
+
+    test('not in the page title and link preview', () {
+      final html = Renderer.renderSiteRecipe(recipe);
+
+      expect(html, contains('<title>Koláč s ovocím</title>'));
+      expect(html, contains('content="Koláč s ovocím"'));
     });
   });
 }
