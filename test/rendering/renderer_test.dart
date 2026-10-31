@@ -88,32 +88,18 @@ void main() {
       expect(html, isNot(contains('<a ')));
     });
 
-    test('standalone page inlines the CSS and keeps the recipe content', () {
+    test('ePub recipe page still has exactly one title heading', () {
       const recipe = Recipe(
         slug: 'kolac',
         title: 'Koláč',
         category: 'Koláče',
-        ingredients: [Section(name: 'Cesto', items: ['múka'])],
+        ingredients: [Section(items: ['múka'])],
         steps: [Section(items: ['Piecť.'])],
-        notes: ['Cez noc.'],
-        source: 'Babka',
       );
 
-      final html = Renderer.renderStandaloneRecipe(
-        recipe,
-        css: 'h1 { color: red; }',
-      );
+      final html = Renderer.renderRecipe(recipe);
 
-      expect(html, startsWith('<!DOCTYPE html>'));
-      expect(html, contains('<style>'));
-      expect(html, contains('h1 { color: red; }'));
-      expect(html, isNot(contains('style.css')));
-      expect(html, contains('name="viewport"'));
-      expect(html, contains('<h1>Koláč</h1>'));
-      expect(html, contains('<h3>Cesto</h3>'));
-      expect(html, contains('<li>Piecť.</li>'));
-      expect(html, contains('<em>Cez noc.</em>'));
-      expect(html, contains('Zdroj: Babka'));
+      expect('<h1>Koláč</h1>'.allMatches(html), hasLength(1));
     });
 
     test('named sections render headings and separate step lists', () {
@@ -137,6 +123,110 @@ void main() {
       expect(html, contains('<h3>Pečenie</h3>'));
       expect('<ol>'.allMatches(html), hasLength(2));
       expect(html.indexOf('<h3>Cesto</h3>'), lessThan(html.indexOf('múka')));
+    });
+  });
+
+  group('Renderer.categoryId', () {
+    test('lowercases and replaces spaces, keeping diacritics', () {
+      expect(Renderer.categoryId('Slané pečivo'), 'slané-pečivo');
+      expect(Renderer.categoryId('Rakúsko-Uhorská'), 'rakúsko-uhorská');
+      expect(Renderer.categoryId('Dezerty'), 'dezerty');
+    });
+  });
+
+  group('Renderer.renderSiteRecipe', () {
+    const recipe = Recipe(
+      slug: 'kolac',
+      title: 'Koláč',
+      category: 'Slané pečivo',
+      ingredients: [Section(name: 'Cesto', items: ['múka'])],
+      steps: [Section(items: ['Piecť.'])],
+      notes: ['Cez noc.'],
+      source: 'Babka',
+    );
+
+    test('is an HTML5 page in Slovak for phones', () {
+      final html = Renderer.renderSiteRecipe(recipe);
+
+      expect(html, startsWith('<!DOCTYPE html>'));
+      expect(html, contains('lang="sk"'));
+      expect(html, contains('name="viewport"'));
+      expect(html, isNot(contains('xml:lang')));
+    });
+
+    test('links the shared stylesheet', () {
+      final html = Renderer.renderSiteRecipe(recipe);
+
+      expect(html, contains('href="style.css"'));
+      expect(html, isNot(contains('<style>')));
+    });
+
+    test('links back to the contents', () {
+      final html = Renderer.renderSiteRecipe(recipe);
+
+      expect(html, contains('<a href="index.html">‹ Obsah</a>'));
+    });
+
+    test('category tag links to its section on the contents page', () {
+      final html = Renderer.renderSiteRecipe(recipe);
+
+      expect(
+        html,
+        contains(
+          '<a class="tag" href="index.html#slané-pečivo">Slané pečivo</a>',
+        ),
+      );
+    });
+
+    test('keeps the shared recipe content', () {
+      final html = Renderer.renderSiteRecipe(recipe);
+
+      expect('<h1>Koláč</h1>'.allMatches(html), hasLength(1));
+      expect(
+        html.indexOf('<h1>Koláč</h1>'),
+        lessThan(html.indexOf('<a class="tag"')),
+      );
+      expect(html, contains('<h3>Cesto</h3>'));
+      expect(html, contains('<li>Piecť.</li>'));
+      expect(html, contains('<em>Cez noc.</em>'));
+      expect(html, contains('Zdroj: Babka'));
+    });
+
+    test('uses only relative links', () {
+      final html = Renderer.renderSiteRecipe(recipe);
+
+      expect(html, isNot(contains('href="/')));
+      expect(html, isNot(contains('http')));
+    });
+
+    test('escapes the title everywhere', () {
+      final html = Renderer.renderSiteRecipe(
+        const Recipe(
+          slug: 'chlieb',
+          title: 'Chlieb & "maslo"',
+          category: 'Pečivo',
+          ingredients: [Section(items: ['múka'])],
+          steps: [Section(items: ['Piecť.'])],
+        ),
+      );
+
+      expect(
+        html,
+        contains('<title>Chlieb &amp; &quot;maslo&quot;</title>'),
+      );
+      expect(html, contains('content="Chlieb &amp; &quot;maslo&quot;"'));
+      expect(html, isNot(contains('Chlieb & ')));
+      expect(html, isNot(contains('"maslo"')));
+    });
+
+    test('sets link preview tags', () {
+      final html = Renderer.renderSiteRecipe(recipe);
+
+      expect(html, contains('property="og:title" content="Koláč"'));
+      expect(
+        html,
+        contains('property="og:description" content="Slané pečivo"'),
+      );
     });
   });
 }

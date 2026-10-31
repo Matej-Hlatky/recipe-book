@@ -82,7 +82,7 @@ class EpubPacker {
               final categoryPlayOrder = playOrder++;
               return {
                 'name': entry.key,
-                'categoryId': entry.key.toLowerCase().replaceAll(' ', '-'),
+                'categoryId': Renderer.categoryId(entry.key),
                 'playOrder': categoryPlayOrder,
                 'recipes': [
                   for (final r in entry.value)

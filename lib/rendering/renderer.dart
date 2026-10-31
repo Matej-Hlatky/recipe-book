@@ -18,8 +18,12 @@ class Renderer {
     htmlEscapeValues: true,
     partialResolver: _resolvePartial,
   );
-  static final _standaloneRecipe = Template(
-    File('templates/recipe.standalone.html.mustache').readAsStringSync(),
+  static final _siteHead = Template(
+    File('templates/site/head.mustache').readAsStringSync(),
+    htmlEscapeValues: true,
+  );
+  static final _siteRecipe = Template(
+    File('templates/site/recipe.html.mustache').readAsStringSync(),
     htmlEscapeValues: true,
     partialResolver: _resolvePartial,
   );
@@ -34,8 +38,15 @@ class Renderer {
 
   static String renderCover() => _cover.renderString({});
 
-  static Template? _resolvePartial(String name) =>
-      name == 'recipe_body' ? _recipeBody : null;
+  static Template? _resolvePartial(String name) => switch (name) {
+        'recipe_body' => _recipeBody,
+        'site_head' => _siteHead,
+        _ => null,
+      };
+
+  /// Anchor id of a category on the contents page and in the NCX.
+  static String categoryId(String category) =>
+      category.toLowerCase().replaceAll(' ', '-');
 
   /// Renders an XHTML recipe page for the ePub, linking `style.css`.
   static String renderRecipe(Recipe recipe) {
@@ -44,17 +55,17 @@ class Renderer {
     return _recipe.renderString(data);
   }
 
-  /// Renders a self-contained HTML5 recipe page with [css] inlined.
-  static String renderStandaloneRecipe(Recipe recipe, {required String css}) {
-    final data = {..._recipeData(recipe), 'css': css};
-
-    return _standaloneRecipe.renderString(data);
-  }
+  /// Renders an HTML5 recipe page for the website, linking `style.css`.
+  static String renderSiteRecipe(Recipe recipe) =>
+      _siteRecipe.renderString(_recipeData(recipe));
 
   static Map<String, Object?> _recipeData(Recipe recipe) => {
         'title': recipe.title,
         'ingredients': _sectionsData(recipe.ingredients),
         'category': recipe.category,
+        'categoryId': categoryId(recipe.category),
+        'pageTitle': recipe.title,
+        'description': recipe.category,
         'steps': _sectionsData(recipe.steps),
         'hasFooter': recipe.notes.isNotEmpty || recipe.source != null,
         'notes': recipe.notes,
