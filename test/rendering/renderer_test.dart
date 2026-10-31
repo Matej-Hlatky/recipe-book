@@ -281,7 +281,7 @@ void main() {
       expect(html, contains('<a href="dezert-palacinky.html">Palacinky</a>'));
     });
 
-    test('category tags jump to matching headings', () {
+    test('category tags and headings link to the heading', () {
       final html = render();
 
       for (final (name, id) in [
@@ -290,16 +290,16 @@ void main() {
         ('Slané pečivo', 'slané-pečivo'),
       ]) {
         expect(html, contains('<a class="tag" href="#$id">$name</a>'));
-        expect(html, contains('<h2 id="$id">$name</h2>'));
+        expect(html, contains('<h2 id="$id"><a href="#$id">$name</a></h2>'));
       }
     });
 
     test('categories are sorted by name', () {
       final html = render();
 
-      final dezerty = html.indexOf('>Dezerty</h2>');
-      final kolace = html.indexOf('>Koláče</h2>');
-      final slane = html.indexOf('>Slané pečivo</h2>');
+      final dezerty = html.indexOf('>Dezerty</a></h2>');
+      final kolace = html.indexOf('>Koláče</a></h2>');
+      final slane = html.indexOf('>Slané pečivo</a></h2>');
       expect(dezerty, isNonNegative);
       expect(dezerty, lessThan(kolace));
       expect(kolace, lessThan(slane));
