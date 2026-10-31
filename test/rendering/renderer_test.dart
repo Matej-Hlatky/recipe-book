@@ -88,6 +88,41 @@ void main() {
       expect(html, isNot(contains('<a ')));
     });
 
+    test('URLs in notes render as links, surrounding text kept', () {
+      final html = Renderer.renderRecipe(
+        const Recipe(
+          slug: 'tiramisu',
+          title: 'Tiramisu',
+          category: 'Dezerty',
+          notes: ['Misa 32×20 & viac (https://www.ikea.com/sk/p/misa/).'],
+        ),
+      );
+
+      final decoded = html.replaceAll('&#x2F;', '/');
+
+      expect(
+        decoded,
+        contains(
+          '<em>Misa 32×20 &amp; viac '
+          '(<a href="https://www.ikea.com/sk/p/misa/">https://www.ikea.com/sk/p/misa/</a>).</em>',
+        ),
+      );
+    });
+
+    test('ePub links stay in the reader (XHTML 1.1 has no target)', () {
+      final html = Renderer.renderRecipe(
+        const Recipe(
+          slug: 'tiramisu',
+          title: 'Tiramisu',
+          category: 'Dezerty',
+          notes: ['Misa (https://www.ikea.com/).'],
+          source: 'https://youtu.be/c4-9rR-YxZk',
+        ),
+      );
+
+      expect(html, isNot(contains('target=')));
+    });
+
     test('ePub recipe page still has exactly one title heading', () {
       const recipe = Recipe(
         slug: 'kolac',
@@ -144,6 +179,21 @@ void main() {
       notes: ['Cez noc.'],
       source: 'Babka',
     );
+
+    test('links in notes and source open in a new tab', () {
+      final html = Renderer.renderSiteRecipe(
+        const Recipe(
+          slug: 'tiramisu',
+          title: 'Tiramisu',
+          category: 'Dezerty',
+          notes: ['Misa (https://www.ikea.com/).', 'Bez odkazu.'],
+          source: 'https://youtu.be/c4-9rR-YxZk',
+        ),
+      );
+
+      expect('target="_blank" rel="noopener"'.allMatches(html), hasLength(2));
+      expect(html, contains('<em>Bez odkazu.</em>'));
+    });
 
     test('is an HTML5 page in Slovak for phones', () {
       final html = Renderer.renderSiteRecipe(recipe);

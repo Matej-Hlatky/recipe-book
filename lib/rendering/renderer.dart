@@ -61,8 +61,9 @@ class Renderer {
   }
 
   /// Renders an HTML5 recipe page for the website, linking `style.css`.
+  /// Links open in a new tab, so the recipe stays open.
   static String renderSiteRecipe(Recipe recipe) =>
-      _siteRecipe.renderString(_recipeData(recipe));
+      _siteRecipe.renderString({..._recipeData(recipe), 'newTab': true});
 
   static Map<String, Object?> _recipeData(Recipe recipe) => {
         'title': recipe.title,
@@ -73,14 +74,42 @@ class Renderer {
         'description': recipe.category,
         'steps': _sectionsData(recipe.steps),
         'hasFooter': recipe.notes.isNotEmpty || recipe.source != null,
-        'notes': recipe.notes,
+        'notes': [
+          for (final note in recipe.notes) {'parts': _linkParts(note)},
+        ],
         'source': recipe.source,
         'sourceIsUrl': recipe.source?.startsWith('http') ?? false,
+        'newTab': false,
       };
 
   static List<Map<String, Object?>> _sectionsData(List<Section> sections) => [
         for (final s in sections) {'name': s.name, 'items': s.items},
       ];
+
+  // Stops before brackets and whitespace; trailing punctuation is trimmed
+  // below, so "(https://…/)." links only the URL.
+  static final _url = RegExp(r'https?://[^\s()<>]+');
+  static final _trailingPunctuation = RegExp(r'[.,;:!?]+$');
+
+  /// Splits [text] into plain-text and URL parts, in order.
+  static List<Map<String, Object?>> _linkParts(String text) {
+    final parts = <Map<String, Object?>>[];
+    var start = 0;
+    for (final match in _url.allMatches(text)) {
+      final url = match[0]!.replaceFirst(_trailingPunctuation, '');
+      if (match.start > start) {
+        parts
+            .add({'text': text.substring(start, match.start), 'isLink': false});
+      }
+      parts.add({'text': url, 'isLink': true});
+      start = match.start + url.length;
+    }
+    if (start < text.length) {
+      parts.add({'text': text.substring(start), 'isLink': false});
+    }
+
+    return parts;
+  }
 
   static String renderToc(
     List<Recipe> recipes, {
