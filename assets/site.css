@@ -255,12 +255,6 @@ hr {
   text-decoration-color: currentColor;
 }
 
-.recipes a::after {
-  content: '\a0›'; /* no-break space: the arrow never wraps alone */
-  display: inline-block; /* keeps the underline off the arrow */
-  color: #c08040;
-}
-
 footer {
   margin-top: var(--row);
   font-size: 12px;
