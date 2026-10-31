@@ -205,13 +205,24 @@ hr {
   color: #5a4a30;
 }
 
+/* The underline is always there but transparent, so hover fades it in
+   and out. */
 .recipes a {
   display: block;
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition: text-decoration-color .3s ease;
+}
+
+.recipes a:hover,
+.recipes a:focus-visible {
+  text-decoration-color: currentColor;
 }
 
 .recipes a::after {
   content: '\a0›'; /* no-break space: the arrow never wraps alone */
+  display: inline-block; /* keeps the underline off the arrow */
   color: #c08040;
 }
 
