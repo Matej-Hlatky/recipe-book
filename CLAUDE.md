@@ -1,13 +1,13 @@
 # Recipe Book
 
-Dart scripts that build a Slovak cookbook from the YAML recipes in `recipes/`: an ePub (`build/recipes.epub`) and one self-contained HTML file per recipe (`build/html/`).
+Dart scripts that build a Slovak cookbook from the YAML recipes in `recipes/`: an ePub (`build/recipes.epub`) and a static website (`build/site/`).
 
 ## Commands
 
 Run from the repository root (templates and assets are loaded by relative path).
 
 - `dart run bin/main.dart` – build the ePub
-- `dart run bin/html.dart` – build `build/html/<recipe-file-name>.html`, CSS inlined
+- `dart run bin/site.dart` – build the website into `build/site/` (`index.html`, one page per recipe, CSS, fonts)
 - `dart run bin/release_notes.dart <from> <to> [repoUrl]` – print release notes for a commit range
 - `dart analyze` and `dart test` – both must pass before committing
 
@@ -16,9 +16,10 @@ Run from the repository root (templates and assets are loaded by relative path).
 - `lib/models/recipe.dart` – `Recipe` and `Section`, parsing and validation of one YAML file
 - `lib/recipe_loader.dart` – loads `recipes/*.yaml`, sorted by file name; the file name is the slug
 - `lib/rendering/renderer.dart` – Mustache rendering of recipe, cover and contents pages
+- `lib/site/site_builder.dart` – writes the website: contents page, recipe pages, stylesheet, fonts
 - `lib/epub/epub_packer.dart` – ePub archive (OPF, NCX, pages, assets)
 - `lib/release_notes.dart` – parses `git diff --name-status`, formats release notes
-- `templates/recipe_body.mustache` – recipe content shared by the ePub page (`recipe.html.mustache`) and the HTML page (`recipe.standalone.html.mustache`)
+- `templates/recipe_body.mustache` – recipe content shared by the ePub page (`recipe.html.mustache`) and the site page (`templates/site/recipe.html.mustache`)
 - `recipes/schema.json` – JSON schema for recipe files; keep it in sync with `Recipe.fromYaml`
 
 ## Workflow
