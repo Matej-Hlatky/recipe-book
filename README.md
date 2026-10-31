@@ -2,7 +2,7 @@
 
 Scripts to build a Slovak recipe book (cookbook) from a set of .yaml files in `recipes/` into an .epub e-book and a static website.
 
-**Website:** https://matej-hlatky.github.io/recipe-book/
+**Website:** <https://matej-hlatky.github.io/recipe-book/>
 
 ## Build
 
@@ -22,7 +22,7 @@ Short Slovak words (`a`, `v`, `do`, `na`, …) never end a line: the build adds 
 
 Open the website on the phone and install it: Safari → Share → "Add to Home Screen", or Chrome → menu → "Install app". It opens full-screen, works offline with every recipe saved, and when online always shows the latest version, so new recipes appear right after a deploy without reinstalling.
 
-The offline part needs a web server, so it doesn't work when opening the files from disk. To try it locally, run `python3 -m http.server -d build/site 8000` and open http://localhost:8000.
+The offline part needs a web server, so it doesn't work when opening the files from disk. To try it locally, run `python3 -m http.server -d build/site 8000` and open <http://localhost:8000>.
 
 After changing the icon (`assets/favicon.svg`), re-render the app icons with `sh tool/render_icons.sh` (macOS with Chrome).
 

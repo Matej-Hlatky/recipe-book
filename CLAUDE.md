@@ -1,6 +1,6 @@
 # Recipe Book
 
-Dart scripts that build a Slovak cookbook from the YAML recipes in `recipes/`: an ePub (`build/recipes.epub`) and a static website (`build/site/`), deployed to https://matej-hlatky.github.io/recipe-book/ and installable as an offline app (PWA).
+Dart scripts that build a Slovak cookbook from the YAML recipes in `recipes/`: an ePub (`build/recipes.epub`) and a static website (`build/site/`), deployed to <https://matej-hlatky.github.io/recipe-book/> and installable as an offline app (PWA).
 
 ## Commands
 
