@@ -49,6 +49,10 @@ void main() {
       expect(File('${outDir.path}/fonts/$name').existsSync(), isTrue,
           reason: name);
     }
+    for (final name in ['LICENSE-lora.txt', 'LICENSE-caveat.txt']) {
+      expect(File('${outDir.path}/fonts/$name').existsSync(), isTrue,
+          reason: name);
+    }
   });
 
   test('removes pages from earlier builds', () {

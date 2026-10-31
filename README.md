@@ -1,6 +1,6 @@
 # Recipe Book
 
-Scripts to build recipe book (cookbook) from a set of .yaml files into a single .epub e-book.
+Scripts to build recipe book (cookbook) from a set of .yaml files into an .epub e-book and a static website.
 
 - `dart run bin/main.dart` builds `build/recipes.epub`
 - `dart run bin/site.dart` builds the website into `build/site/`; open `build/site/index.html` in a browser to check it

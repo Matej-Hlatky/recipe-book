@@ -112,6 +112,8 @@ a {
 }
 
 .back a {
+  display: inline-block;
+  padding: 0 14px;
   text-decoration: none;
 }
 
