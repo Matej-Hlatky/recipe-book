@@ -22,3 +22,10 @@ jobs:
         with:
           name: recipes
           path: build/recipes.epub
+
+      - run: dart run bin/site.dart
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: site
+          path: build/site

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+{{> site_head}}
+</head>
+<body>
+  <main class="page contents">
+    <h1>Recepty</h1>
+    <p class="subtitle">z našej kuchyne</p>
+    <nav class="tags">{{#categories}}<a class="tag" href="#{{id}}">{{name}}</a> {{/categories}}</nav>
+    {{#categories}}
+    <h2 id="{{id}}"><a href="#{{id}}">{{name}}</a></h2>
+    <ul class="recipes">{{#recipes}}<li><a href="{{slug}}.html">{{title}}</a></li>{{/recipes}}</ul>
+    {{/categories}}
+    <footer>{{generatedAt}} · {{commitHash}}</footer>
+  </main>
+</body>
+</html>

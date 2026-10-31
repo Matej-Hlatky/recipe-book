@@ -1,0 +1,268 @@
+/* Grandma's notebook: yellow ruled paper, every line of text sits on a
+   ruled line. Every line height and vertical margin is a multiple of
+   --row; anything else shifts the text below it off the lines. */
+
+/* Fonts: Fontsource 5.1.0, self-hosted (see fonts/LICENSE-*.txt). */
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/lora-latin-ext-400-normal.woff2) format('woff2');
+  unicode-range: U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/lora-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/lora-latin-ext-400-italic.woff2) format('woff2');
+  unicode-range: U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/lora-latin-400-italic.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/lora-latin-ext-600-normal.woff2) format('woff2');
+  unicode-range: U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/lora-latin-600-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/caveat-latin-ext-600-normal.woff2) format('woff2');
+  unicode-range: U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/caveat-latin-600-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+/* The paper: on the root, so the lines scroll with the page. Each 30px
+   tile has its rule on the last pixel; shifted up 5px so the text sits
+   just above it. */
+html {
+  --row: 30px;
+  background-color: #fbf0c8;
+  background-image: linear-gradient(transparent calc(var(--row) - 1px), rgba(110, 140, 190, .3) calc(var(--row) - 1px));
+  background-size: 100% var(--row);
+  background-position: 0 -5px;
+  color: #2e2a24;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 17px;
+  line-height: var(--row);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* Amber thumb on a slightly darker paper track. */
+  scrollbar-color: #d2a85e #f3e4b0;
+}
+
+/* Safari ignores scrollbar-color. */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f3e4b0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d2a85e;
+  border: 3px solid #f3e4b0;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8a3b1e;
+}
+
+body {
+  margin: 0;
+  padding: 0 14px;
+}
+
+h1, h2, h3, p, ul, ol, hr {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+.back,
+.page {
+  box-sizing: border-box;
+  max-width: 36em;
+  margin: 0 auto;
+}
+
+.back {
+  padding-left: 36px;
+  font-size: 14px;
+  opacity: .7;
+}
+
+.back a {
+  display: inline-block;
+  padding: 0 14px;
+  text-decoration: none;
+}
+
+/* The page, with the red margin line on its left. */
+.page {
+  min-height: 100vh;
+  padding: 0 20px var(--row) 34px;
+  border-left: 2px solid rgba(200, 80, 80, .35);
+  overflow-wrap: break-word;
+}
+
+.back + .page {
+  min-height: calc(100vh - var(--row));
+}
+
+.contents {
+  padding-top: var(--row);
+}
+
+h1, h2 {
+  font-family: 'Caveat', cursive;
+  font-weight: 600;
+  color: #8a3b1e;
+}
+
+h1 {
+  font-size: 44px;
+  line-height: calc(var(--row) * 2);
+}
+
+.contents h1 {
+  font-size: 52px;
+}
+
+h2 {
+  font-size: 30px;
+  line-height: var(--row);
+  margin-top: var(--row);
+}
+
+h2 a {
+  text-decoration: none;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: #e0a050;
+}
+
+ul, ol {
+  padding-left: 20px;
+}
+
+/* Category pill. Inline with a short line height, so it never makes its
+   line taller than a row. */
+.tag {
+  font-size: 13px;
+  line-height: 20px;
+  padding: 2px 10px;
+  border-radius: 10px;
+  background: #e9c87a;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* A drawn line on the ruled line of its own row, one blank row above. */
+hr {
+  height: var(--row);
+  margin-top: var(--row);
+  border: 0;
+  background: linear-gradient(transparent calc(var(--row) - 7px), rgba(138, 59, 30, .5) calc(var(--row) - 7px) calc(var(--row) - 5px), transparent calc(var(--row) - 5px));
+}
+
+.notes {
+  font-style: italic;
+  color: #5a4a30;
+}
+
+/* Each note and the source start with a hanging dash, so entries are told
+   apart without a gap that would push text off the ruled lines. */
+.notes p {
+  position: relative;
+  padding-left: 18px;
+}
+
+.notes p::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+}
+
+.notes a {
+  color: #8a3b1e;
+  overflow-wrap: anywhere;
+}
+
+/* Contents page */
+.subtitle {
+  font-style: italic;
+  color: #5a4a30;
+}
+
+/* The underline is always there but transparent, so hover fades it in
+   and out. */
+.recipes a {
+  display: block;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition: text-decoration-color .3s ease;
+}
+
+.recipes a:hover,
+.recipes a:focus-visible {
+  text-decoration-color: currentColor;
+}
+
+.recipes a::after {
+  content: '\a0›'; /* no-break space: the arrow never wraps alone */
+  display: inline-block; /* keeps the underline off the arrow */
+  color: #c08040;
+}
+
+footer {
+  margin-top: var(--row);
+  font-size: 12px;
+  color: #8a7a5a;
+}
