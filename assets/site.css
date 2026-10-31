@@ -165,10 +165,6 @@ ul, ol {
   padding-left: 20px;
 }
 
-ul li::marker {
-  color: #8a3b1e;
-}
-
 /* Category pill. Inline with a short line height, so it never makes its
    line taller than a row. */
 .tag {
