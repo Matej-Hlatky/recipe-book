@@ -6,3 +6,5 @@ Scripts to build recipe book (cookbook) from a set of .yaml files into a single 
 - `dart run bin/site.dart` builds the website into `build/site/`; open `build/site/index.html` in a browser to check it
 
 Every push to `main` creates a GitHub release named by date and time (e.g. `2026-10-08_21-36`) with the ePub attached and notes listing added, changed and removed recipes since the previous `main` commit.
+
+Every push to `main` also publishes the website to GitHub Pages (public). One-time setup: the repository must be public, and Settings → Pages → Source must be set to "GitHub Actions".

@@ -26,7 +26,7 @@ Run from the repository root (templates and assets are loaded by relative path).
 
 - Work on a feature branch; squash-merge it into `main`.
 - Write tests first (`test/` mirrors `lib/`).
-- CI: `test.yml` runs analyze and tests on every push; `build.yml` builds the ePub for PRs; `release.yml` runs on every push to `main` and creates a release tagged with the Bratislava date and time (e.g. `2026-10-08_21-36`), the ePub attached and notes since the previous `main` commit. All workflows can also be run manually; releases only from `main`.
+- CI: `test.yml` runs analyze and tests on every push; `build.yml` builds the ePub and the website for PRs; `release.yml` runs on every push to `main` and creates a release tagged with the Bratislava date and time (e.g. `2026-10-08_21-36`), the ePub attached and notes since the previous `main` commit; `pages.yml` publishes the website (`build/site`) to GitHub Pages on every push to `main`. All workflows can also be run manually; releases and Pages deployments only from `main`.
 
 ## Gotchas
 
