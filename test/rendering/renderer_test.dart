@@ -229,4 +229,91 @@ void main() {
       );
     });
   });
+
+  group('Renderer.renderSiteIndex', () {
+    const recipes = [
+      Recipe(
+        slug: 'kolac-babovka',
+        title: 'Bábovka',
+        category: 'Koláče',
+        ingredients: [Section(items: ['múka'])],
+        steps: [Section(items: ['Upiecť.'])],
+      ),
+      Recipe(
+        slug: 'slane-osie-hniezda',
+        title: 'Osie hniezda',
+        category: 'Slané pečivo',
+        ingredients: [Section(items: ['múka'])],
+        steps: [Section(items: ['Upiecť.'])],
+      ),
+      Recipe(
+        slug: 'dezert-palacinky',
+        title: 'Palacinky',
+        category: 'Dezerty',
+        ingredients: [Section(items: ['múka'])],
+        steps: [Section(items: ['Usmažiť.'])],
+      ),
+    ];
+
+    String render() => Renderer.renderSiteIndex(
+          recipes,
+          generatedAt: DateTime.utc(2026, 10, 31, 9, 5),
+          commitHash: 'abc1234',
+        );
+
+    test('is an HTML5 page titled Recepty', () {
+      final html = render();
+
+      expect(html, startsWith('<!DOCTYPE html>'));
+      expect(html, contains('<title>Recepty</title>'));
+      expect(html, contains('<h1>Recepty</h1>'));
+      expect(html, contains('href="style.css"'));
+    });
+
+    test('links every recipe by its file name', () {
+      final html = render();
+
+      expect(html, contains('<a href="kolac-babovka.html">Bábovka</a>'));
+      expect(
+        html,
+        contains('<a href="slane-osie-hniezda.html">Osie hniezda</a>'),
+      );
+      expect(html, contains('<a href="dezert-palacinky.html">Palacinky</a>'));
+    });
+
+    test('category tags jump to matching headings', () {
+      final html = render();
+
+      for (final (name, id) in [
+        ('Dezerty', 'dezerty'),
+        ('Koláče', 'koláče'),
+        ('Slané pečivo', 'slané-pečivo'),
+      ]) {
+        expect(html, contains('<a class="tag" href="#$id">$name</a>'));
+        expect(html, contains('<h2 id="$id">$name</h2>'));
+      }
+    });
+
+    test('categories are sorted by name', () {
+      final html = render();
+
+      final dezerty = html.indexOf('>Dezerty</h2>');
+      final kolace = html.indexOf('>Koláče</h2>');
+      final slane = html.indexOf('>Slané pečivo</h2>');
+      expect(dezerty, isNonNegative);
+      expect(dezerty, lessThan(kolace));
+      expect(kolace, lessThan(slane));
+    });
+
+    test('shows build time and commit', () {
+      expect(render(), contains('2026-10-31 09:05 UTC · abc1234'));
+    });
+
+    test('uses only relative links', () {
+      final html = render();
+
+      expect(html, isNot(contains('href="/')));
+      expect(html, isNot(contains('http')));
+    });
+  });
 }

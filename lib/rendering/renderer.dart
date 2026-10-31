@@ -27,6 +27,11 @@ class Renderer {
     htmlEscapeValues: true,
     partialResolver: _resolvePartial,
   );
+  static final _siteIndex = Template(
+    File('templates/site/index.html.mustache').readAsStringSync(),
+    htmlEscapeValues: true,
+    partialResolver: _resolvePartial,
+  );
   static final _cover = Template(
     File('templates/cover.html.mustache').readAsStringSync(),
     htmlEscapeValues: true,
@@ -81,23 +86,42 @@ class Renderer {
     List<Recipe> recipes, {
     required DateTime generatedAt,
     required String commitHash,
-  }) {
+  }) =>
+      _toc.renderString(_contentsData(recipes, generatedAt, commitHash));
+
+  /// Renders the HTML5 contents page for the website, linking `style.css`.
+  static String renderSiteIndex(
+    List<Recipe> recipes, {
+    required DateTime generatedAt,
+    required String commitHash,
+  }) =>
+      _siteIndex.renderString({
+        ..._contentsData(recipes, generatedAt, commitHash),
+        'pageTitle': 'Recepty',
+        'description': 'Recepty z našej kuchyne',
+      });
+
+  /// Recipes grouped by category, categories sorted by name.
+  static Map<String, Object?> _contentsData(
+    List<Recipe> recipes,
+    DateTime generatedAt,
+    String commitHash,
+  ) {
     final grouped = groupBy(recipes, (r) => r.category);
 
-    final data = {
+    return {
       'generatedAt': '${_dateFormat.format(generatedAt.toUtc())} UTC',
       'commitHash': commitHash,
       'categories': [
         for (final entry in grouped.entries.sortedBy((e) => e.key))
           {
             'name': entry.key,
+            'id': categoryId(entry.key),
             'recipes': [
               for (final r in entry.value) {'slug': r.slug, 'title': r.title},
             ],
           },
       ],
     };
-
-    return _toc.renderString(data);
   }
 }
