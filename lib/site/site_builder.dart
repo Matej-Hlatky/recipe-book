@@ -10,7 +10,7 @@ class SiteBuilder {
   final Directory outDir;
 
   /// Deletes [outDir], then writes `index.html`, `<slug>.html` per recipe,
-  /// `style.css` (from `assets/site.css`) and `fonts/` (every file in
+  /// `style.css` (from `assets/site.css`), `favicon.svg` and `fonts/` (every file in
   /// `assets/fonts/` except dotfiles, including the licence files).
   void build({
     required List<Recipe> recipes,
@@ -33,6 +33,7 @@ class SiteBuilder {
     }
 
     File('assets/site.css').copySync('${outDir.path}/style.css');
+    File('assets/favicon.svg').copySync('${outDir.path}/favicon.svg');
     final fontsDir = Directory('${outDir.path}/fonts')..createSync();
     for (final font in Directory('assets/fonts').listSync().whereType<File>()) {
       final name = font.uri.pathSegments.last;

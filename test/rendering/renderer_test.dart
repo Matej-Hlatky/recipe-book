@@ -211,6 +211,13 @@ void main() {
       expect(html, isNot(contains('<style>')));
     });
 
+    test('links the favicon', () {
+      expect(
+        Renderer.renderSiteRecipe(recipe),
+        contains('<link rel="icon" href="favicon.svg" type="image/svg+xml" />'),
+      );
+    });
+
     test('links back to the contents', () {
       final html = Renderer.renderSiteRecipe(recipe);
 

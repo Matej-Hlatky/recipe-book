@@ -55,6 +55,15 @@ void main() {
     }
   });
 
+  test('copies the favicon', () {
+    build();
+
+    expect(
+      File('${outDir.path}/favicon.svg').readAsStringSync(),
+      File('assets/favicon.svg').readAsStringSync(),
+    );
+  });
+
   test('removes pages from earlier builds', () {
     outDir.createSync(recursive: true);
     File('${outDir.path}/old.html').writeAsStringSync('old');

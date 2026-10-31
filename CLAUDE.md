@@ -22,7 +22,7 @@ Run from the repository root (templates and assets are loaded by relative path).
 - `lib/release_notes.dart` – parses `git diff --name-status`, formats release notes
 - `templates/recipe_body.mustache` – recipe content shared by the ePub page (`recipe.html.mustache`) and the site page (`templates/site/recipe.html.mustache`)
 - `templates/site/` – site head partial, contents page, recipe page (HTML5)
-- `assets/site.css`, `assets/fonts/` – site only; the ePub uses `assets/style.css`
+- `assets/site.css`, `assets/fonts/`, `assets/favicon.svg` – site only; the ePub uses `assets/style.css`
 - `recipes/schema.json` – JSON schema for recipe files; keep it in sync with `Recipe.fromYaml`
 
 ## Workflow
