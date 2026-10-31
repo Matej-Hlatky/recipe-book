@@ -11,6 +11,7 @@ Run from the repository root (templates and assets are loaded by relative path).
 - `dart run bin/release_notes.dart <from> <to> [repoUrl]` – print release notes for a commit range
 - `dart analyze` and `dart test` – both must pass before committing
 - `python3 -m http.server -d build/site 8000` – serve the site to check the app (install, offline), which doesn't run from `file://`
+- `cloudflared tunnel --url http://localhost:8000` – temporary HTTPS address to test the app on a phone (address via `curl -s http://127.0.0.1:20241/quicktunnel` if not printed)
 - `sh tool/render_icons.sh` – re-render the app icons in `assets/icons/` after changing `assets/favicon.svg` or `tool/icon-maskable.svg` (macOS, Chrome)
 
 ## Code map

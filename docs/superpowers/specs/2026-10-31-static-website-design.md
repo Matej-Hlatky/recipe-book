@@ -186,3 +186,7 @@ must pass.
 - The app (install, offline, update) can only be checked from a web
   server, e.g. served at `/recipe-book/` and driven with Chrome DevTools
   (installability, offline emulation, a changed `sw.js`).
+- On a phone the app needs HTTPS: serve `build/site` locally and open it
+  through a temporary tunnel (`cloudflared tunnel --url
+  http://localhost:8000`). Tested this way on a real phone on 2026-10-31:
+  installed from the home screen and works.
