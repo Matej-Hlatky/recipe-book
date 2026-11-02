@@ -42,6 +42,9 @@ class EpubPacker {
     required DateTime modifiedAt,
     required String commitHash,
   }) {
+    // Pages follow the contents, so paging through the book matches it.
+    recipes = Renderer.contentsOrder(recipes);
+
     // mimetype must be first and stored uncompressed
     final mimetypeBytes = utf8.encode('application/epub+zip');
     final mimetype = ArchiveFile(
@@ -77,7 +80,7 @@ class EpubPacker {
       var playOrder = 3;
       final data = {
         'categories': [
-          for (final entry in grouped.entries.sortedBy((e) => e.key))
+          for (final entry in grouped.entries)
             () {
               final categoryPlayOrder = playOrder++;
               return {

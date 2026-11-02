@@ -319,6 +319,36 @@ void main() {
     });
   });
 
+  group('Renderer.renderToc', () {
+    test('lists recipes of a category by title, in Slovak order', () {
+      final html = Renderer.renderToc(
+        _unsorted,
+        generatedAt: DateTime.utc(2026, 10, 31),
+        commitHash: 'abc1234',
+      );
+
+      expect(_titleOrder(html), _sortedTitles);
+    });
+  });
+
+  group('Renderer.contentsOrder', () {
+    test('groups by category name, then recipe title, in Slovak order', () {
+      final order = Renderer.contentsOrder([
+        ..._unsorted,
+        const Recipe(slug: 'b', title: 'Bábovka', category: 'Dezerty'),
+        const Recipe(slug: 't', title: 'Lasagne', category: 'Talianska'),
+        const Recipe(slug: 's', title: 'Paella', category: 'Španielska'),
+      ]);
+
+      expect(order.map((r) => r.title), [
+        'Bábovka',
+        ..._sortedTitles,
+        'Paella',
+        'Lasagne',
+      ]);
+    });
+  });
+
   group('Renderer.renderSiteIndex', () {
     const recipes = [
       Recipe(
@@ -404,6 +434,16 @@ void main() {
       expect(dezerty, isNonNegative);
       expect(dezerty, lessThan(kolace));
       expect(kolace, lessThan(slane));
+    });
+
+    test('lists recipes of a category by title, in Slovak order', () {
+      final html = Renderer.renderSiteIndex(
+        _unsorted,
+        generatedAt: DateTime.utc(2026, 10, 31),
+        commitHash: 'abc1234',
+      );
+
+      expect(_titleOrder(html), _sortedTitles);
     });
 
     test('shows build time and commit', () {
@@ -493,3 +533,26 @@ void main() {
     });
   });
 }
+
+/// One category, listed in file-name order, not by title.
+const _unsorted = [
+  Recipe(slug: 'polievka-tekvicova', title: 'Tekvicová', category: 'Polievky'),
+  Recipe(slug: 'polievka-sosovicova', title: 'Šošovicová', category: 'Polievky'),
+  Recipe(slug: 'polievka-cesnakova', title: 'Cesnaková', category: 'Polievky'),
+  Recipe(slug: 'polievka-sparglova', title: 'Špargľová', category: 'Polievky'),
+  Recipe(slug: 'polievka-zelerova', title: 'Zelerová', category: 'Polievky'),
+];
+
+const _sortedTitles = [
+  'Cesnaková',
+  'Šošovicová',
+  'Špargľová',
+  'Tekvicová',
+  'Zelerová',
+];
+
+final _soupLink = RegExp(r'<a href="polievka-[^"]+">([^<]+)</a>');
+
+/// Recipe link texts in the order they appear in [html].
+List<String> _titleOrder(String html) =>
+    _soupLink.allMatches(html).map((m) => m[1]!).toList();

@@ -80,7 +80,7 @@ headings).
 - Handwritten title "Recepty" and the subtitle "z našej kuchyne".
 - A row of category tags; each jumps to that category's section on the
   same page (`#anchor`).
-- Categories in the same order as the ePub contents page (sorted by name).
+- Categories in the same order as the ePub contents page: categories by name, recipes by title, both in Slovak alphabetical order.
   Each category heading links to itself, so a category can be shared as
   `index.html#koláče`.
 - Each category lists its recipes as a bulleted list of links. Long titles

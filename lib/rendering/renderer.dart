@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:mustache_template/mustache_template.dart';
 
 import '../models/recipe.dart';
+import 'slovak_order.dart';
 import 'typography.dart';
 
 class Renderer {
@@ -155,19 +156,27 @@ class Renderer {
         'description': 'Recepty z našej kuchyne',
       });
 
-  /// Recipes grouped by category, categories sorted by name.
+  /// [recipes] in contents order: by category name, then by title, both in
+  /// Slovak alphabetical order. The ePub pages follow the same order.
+  static List<Recipe> contentsOrder(List<Recipe> recipes) => [...recipes]
+    ..sort((a, b) {
+      final byCategory = compareSlovak(a.category, b.category);
+      return byCategory != 0 ? byCategory : compareSlovak(a.title, b.title);
+    });
+
+  /// Recipes grouped by category, in [contentsOrder].
   static Map<String, Object?> _contentsData(
     List<Recipe> recipes,
     DateTime generatedAt,
     String commitHash,
   ) {
-    final grouped = groupBy(recipes, (r) => r.category);
+    final grouped = groupBy(contentsOrder(recipes), (r) => r.category);
 
     return {
       'generatedAt': '${_dateFormat.format(generatedAt.toUtc())} UTC',
       'commitHash': commitHash,
       'categories': [
-        for (final entry in grouped.entries.sortedBy((e) => e.key))
+        for (final entry in grouped.entries)
           {
             'name': entry.key,
             'id': categoryId(entry.key),
