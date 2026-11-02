@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=./schema.json
 ---
 title: Makový koláč s makovou posýpkou
-category: Dezerty
+category: Dezerty a koláče
 ingredients:
   Cesto:
     - 2 ks 	vajce

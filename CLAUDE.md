@@ -50,7 +50,7 @@ Run from the repository root (templates and assets are loaded by relative path).
 ## Recipe conventions
 
 - One recipe per file, validated by `recipes/schema.json`.
-- File names use a Slovak category prefix: `dezert-`, `kolac-`, `polievka-`, `priloha-`, `slane-`, `india-`, `sk-` (never English, e.g. `indian-`).
+- File names use a Slovak category prefix: `dezert-`, `kolac-`, `polievka-`, `priloha-`, `slane-`, `india-`, `sk-`, `it-`, `es-`, `ostatne-` (never English, e.g. `indian-`).
 - Slovak text is written with full diacritics.
 - Use normal spaces; the build adds the no-break space after short words (`a`, `v`, `do`, `na`, …). Don't type U+00A0 or `&nbsp;` into recipes.
 - `ingredients` and `steps` are either a flat list or a map of section name to list (e.g. `Cesto`, `Posýpka`, `Pečenie`); a field can't mix both. Use sections instead of YAML comments for content that belongs in the book. The final baking goes into its own `Pečenie` steps section; pre-baking a part (e.g. a crust) stays in that part's section.
