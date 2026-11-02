@@ -4,7 +4,12 @@ Each recipe is one YAML file in `recipes/`, validated by [`recipes/schema.json`]
 
 ## File name
 
-The file name is the recipe's address on the website (`kolac-babovka.yaml` → `…/kolac-babovka.html`), so keep it short, lowercase and without diacritics. Start it with a Slovak category prefix: `dezert-`, `kolac-`, `polievka-`, `priloha-`, `slane-`, `india-`, `sk-`, `it-`, `es-`, `ostatne-`.
+The file name is the recipe's address on the website (`kolac-babovka.yaml` → `…/kolac-babovka.html`), so keep it short, lowercase and without diacritics. Start it with a Slovak prefix:
+
+- preferably the cuisine the dish comes from: `it-` (talianska), `es-` (španielska), `india-` (indická), `sk-` (rakúsko-uhorská);
+- otherwise the dish type: `hlavne-`, `polievka-`, `priloha-`, `slane-`, `dezert-`, `kolac-`.
+
+Don't rename existing files, since that would break links to them.
 
 ## Fields
 
@@ -24,7 +29,7 @@ notes:
 source: https://example.sk/recept
 ```
 
-- `title` and `category` are required. Recipes with the same `category` are grouped together in the contents.
+- `title` and `category` are required. `category` is the dish type – `Hlavné jedlá`, `Polievky`, `Prílohy`, `Slané pečivo` or `Dezerty a koláče` – and recipes with the same category are grouped together in the contents, sorted by title.
 - `ingredients` and `steps` are either a flat list or a map of section name to list, e.g. `Cesto`, `Posýpka`, `Pečenie`. A field can't mix both. The final baking goes into its own `Pečenie` section.
 - `notes` holds remarks: tips, servings, prep time. They're shown in italics below the recipe, and `https://` addresses in them become links.
 - `source` is where the recipe comes from, preferably a URL.

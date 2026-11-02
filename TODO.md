@@ -6,4 +6,3 @@
 - [x] Archive as ZIP with ePub metadata
 - [ ] Support more attributes and details (`tags`, `prepTime`, `complexity`, `accessories`)
 - [x] Recipe categories as new chapters
-- [ ] Merge categories into "Main" and add cuisine for the kitchen style (Italian, Indian, Spanish, Austria-Hungary)

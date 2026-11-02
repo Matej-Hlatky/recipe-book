@@ -19,6 +19,7 @@ Run from the repository root (templates and assets are loaded by relative path).
 - `lib/models/recipe.dart` – `Recipe` and `Section`, parsing and validation of one YAML file
 - `lib/recipe_loader.dart` – loads `recipes/*.yaml`, sorted by file name; the file name is the slug
 - `lib/rendering/renderer.dart` – Mustache rendering of recipe, cover and contents pages (ePub) and the site recipe and contents pages
+- `lib/rendering/slovak_order.dart` – `compareSlovak`: Slovak alphabetical order (`č` after `c`, `ch` after `h`, …); `Renderer.contentsOrder` uses it to sort the website and ePub contents and the ePub pages by category, then title
 - `lib/rendering/typography.dart` – `bindShortWords`: no-break space after short Slovak words
 - `lib/git.dart` – commit hash helper shared by the ePub and site builds
 - `lib/site/site_builder.dart` – writes the website: contents page, recipe pages, stylesheet, favicon, manifest, icons, fonts, and last `sw.js` listing all of them
@@ -51,7 +52,8 @@ Run from the repository root (templates and assets are loaded by relative path).
 ## Recipe conventions
 
 - One recipe per file, validated by `recipes/schema.json`.
-- File names use a Slovak category prefix: `dezert-`, `kolac-`, `polievka-`, `priloha-`, `slane-`, `india-`, `sk-`, `it-`, `es-`, `ostatne-` (never English, e.g. `indian-`).
+- `category` is the dish type: `Hlavné jedlá`, `Polievky`, `Prílohy`, `Slané pečivo`, `Dezerty a koláče`.
+- File names (the website URL) preferably start with the cuisine the dish comes from: `it-`, `es-`, `india-`, `sk-` (Rakúsko-Uhorská); otherwise with the dish type: `hlavne-`, `polievka-`, `priloha-`, `slane-`, `dezert-`, `kolac-`. Prefixes are Slovak, never English (e.g. not `indian-`). Don't rename existing files, so links keep working (e.g. `ostatne-kuracie-placky-s-cuketou` stays).
 - Slovak text is written with full diacritics.
 - Use normal spaces; the build adds the no-break space after short words (`a`, `v`, `do`, `na`, …). Don't type U+00A0 or `&nbsp;` into recipes.
 - `ingredients` and `steps` are either a flat list or a map of section name to list (e.g. `Cesto`, `Posýpka`, `Pečenie`); a field can't mix both. Use sections instead of YAML comments for content that belongs in the book. The final baking goes into its own `Pečenie` steps section; pre-baking a part (e.g. a crust) stays in that part's section.

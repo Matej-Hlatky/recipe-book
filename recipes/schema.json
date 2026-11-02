@@ -11,7 +11,7 @@
     },
     "category": {
       "type": "string",
-      "description": "Cuisine or category (e.g. Italian, Indian)"
+      "description": "Dish type (e.g. Hlavné jedlá, Polievky, Dezerty a koláče)"
     },
     "ingredients": {
       "description": "List of ingredients, or a map of section name to list",

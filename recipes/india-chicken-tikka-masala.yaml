@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=./schema.json
 ---
 title: Chicken Tikka Masala
-category: India
+category: Hlavné jedlá
 ingredients:
   - 1 kg kuracích pŕs
   - 250g bieleho jogurtu
