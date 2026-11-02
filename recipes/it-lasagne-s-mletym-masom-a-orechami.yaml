@@ -1,0 +1,41 @@
+# yaml-language-server: $schema=./schema.json
+---
+title: Lasagne s mletým mäsom a orechami
+category: Talianska kuchyňa
+ingredients:
+  - 1 kg mletého bravčového mäsa z pliecka
+  - 300 g lasagní
+  - 1 veľká cibuľa
+  - 5 strúčikov cesnaku
+  - olivový olej
+  - 3 lyžice masla
+  - 2 bobkové listy
+  - morská soľ
+  - čierne korenie
+  - 2 lyžice hladkej múky
+  - 1 l mlieka
+  - 150 g syra Grana Padano
+  - 1 hrsť vlašských orechov
+  - čerstvý tymian
+  - 150 ml suchého bieleho vína
+  - čerstvá petržlenová vňať
+steps:
+  Bešamel:
+    - Polovicu cibule nasekať nadrobno a 2 strúčiky cesnaku rozpučiť čepeľou noža. Orestovať ich s bobkovými listami dosklovita v menšom kastróle na troche olivového oleja a 2 lyžiciach masla.
+    - Osoliť, okoreniť, prisypať múku a krátko opražiť. Zaliať mliekom, metličkou rozmiešať a za stáleho miešania variť približne 10 minút do hladka.
+    - Primiešať 50 g najemno nastrúhaného syra a krátko povariť. Ak je bešamel príliš hustý, zriediť ho trochou mlieka. Hotový precediť cez sitko.
+  Mäso:
+    - Druhú polovicu cibule a 3 strúčiky cesnaku nasekať najemno a orestovať na veľkej panvici na olivovom oleji dozlatista.
+    - Pridať mleté mäso, osoliť, okoreniť, pridať nahrubo nasekané orechy a natrhaný tymian a opekať do zlatohneda.
+    - Podliať vínom, nechať odpariť alkohol, pridať asi 1 lyžicu masla, premiešať a stiahnuť z ohňa.
+  Lasagne:
+    - Plátky lasagní krátko predvariť v osolenej vriacej vode, scediť a prepláchnuť studenou vodou.
+    - Dno zapekacej misy vymazať trochou bešamelu, rozložiť naň plátky lasagní a 1/3 mäsovej zmesi a poliať 1/3 bešamelu. Vrstviť v rovnakom poradí, kým sa neminú suroviny.
+    - Zakončiť plátkami lasagní, potrieť bešamelom a posypať asi 100 g najemno nastrúhaného syra a trochou tymianu.
+  Pečenie:
+    - Piecť v rúre pri 200 °C asi 40 minút.
+    - Pred podávaním posypať nasekanou petržlenovou vňaťou.
+notes:
+  - "Počet porcií: 6"
+  - "Doba prípravy: 1 hodina"
+source: https://kuchynalidla.sk/recepty/lasagne-s-mletym-masom-a-orechami

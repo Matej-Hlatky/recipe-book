@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=./schema.json
+---
+title: Švédsky tvarohový koláč
+category: Dezerty a koláče
+ingredients:
+  Sypká zmes:
+    - 3 hrnčeky polohrubej múky
+    - 1 hrnček cukru
+    - 1 prášok do pečiva
+    - štipka soli
+  Krém:
+    - 750 g tvarohu
+    - 3 vajcia
+    - 1 hrnček cukru
+    - 500 ml mlieka
+    - 1 lyžica kokosu
+    - hrsť hrozienok namočených v rume
+  Navrch:
+    - 140 g rozpusteného masla
+steps:
+  Sypká zmes:
+    - Zmiešať múku, cukor, prášok do pečiva a soľ a rozdeliť na polovicu.
+    - Jednu polovicu rovnomerne nasypať na vymastený plech.
+  Krém:
+    - V inej miske prešľahať tvaroh, vajcia, cukor, mlieko a kokos na hladký krém.
+  Zostavenie:
+    - Krém vyliať na sypkú vrstvu, rozložiť naň hrozienka a navrch nasypať zvyšok sypkej zmesi.
+    - Povrch poliať rozpusteným maslom.
+  Pečenie:
+    - Piecť v predhriatej rúre pri 160 °C približne 65 minút, kým nie je povrch zlatistý.
+    - Nechať vychladnúť a nakrájať.
+notes:
+  - Do krému sa dá pridať citrónová kôra; hrozienka sa dajú nahradiť iným sušeným ovocím (brusnice, čučoriedky).
+  - Koláč je upečený, keď špáradlo zapichnuté do stredu vyjde čisté.
+source: https://varimeslaskou.sk/svedsky-tvarohovy-kolac-krehky-a-lahodny-jeden-z-najlepsich/

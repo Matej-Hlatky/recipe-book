@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=./schema.json
+---
+title: Cuketové rizoto s parmezánom
+category: Talianska kuchyňa
+ingredients:
+  - 2 šalotky
+  - 2 cukety (asi 350 g)
+  - 300 g ryže arborio
+  - 150 ml bieleho suchého vína
+  - 1 l vývaru alebo vody
+  - 3 plátky masla
+  - 100 g parmezánu (alebo Grana Padano)
+  - panenský olivový olej
+  - kôra z bio citróna
+  - soľ a čierne korenie
+  - sušený tymian
+  - hrsť čerstvého tymianu
+  - 1 balenie burraty alebo mozzarelly (125 g)
+steps:
+  - V menšom hrnci zohriať kurací alebo zeleninový vývar; namiesto neho sa dá použiť horúca voda osolená lyžičkou soli.
+  - V hlbokej panvici zohriať olivový olej a opiecť na ňom nadrobno nasekané šalotky dosklovita.
+  - Prisypať nepremytú ryžu a jednu cuketu nastrúhanú nahrubo, premiešať a krátko opekať. Priliať víno a variť asi 2 minúty, kým sa neodparí.
+  - Znížiť teplotu a pridať prvú naberačku horúceho vývaru. Miešať, kým sa nevstrebe. Postupne pridávať ďalší vývar a zakaždým miešať, kým sa ryža neuvarí al dente.
+  - Keď je ryža takmer hotová, pridať druhú cuketu nastrúhanú nahrubo, sušený tymian, plátky masla, nastrúhaný parmezán a trochu nastrúhanej citrónovej kôry. Premiešať a dochutiť soľou a korením.
+  - Podávať s natrhanou burratou alebo mozzarellou a čerstvým tymianom.
+notes:
+  - "Počet porcií: 3 – 4"
+  - Vývar alebo voda musia byť horúce, aby sa nezastavilo varenie ryže.
+  - Časť cukety sa dá nakrájať na pásiky, opiecť na panvici a použiť na ozdobu.
+  - Zvyšok rizota sa dá na druhý deň zohriať na panvici s plátkami masla, ktoré mu vráti krémovosť.
+source: https://www.lenivakucharka.sk/cuketove-rizoto-s-parmezanom/

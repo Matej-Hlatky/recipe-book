@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=./schema.json
+---
+title: Sypaný tvarohový koláč so slivkami a s makom
+category: Dezerty a koláče
+ingredients:
+  Cesto:
+    - 380 g hladkej múky
+    - 100 g práškového cukru
+    - 40 g mletého maku
+    - štipka soli
+    - 1 kypriaci prášok do pečiva
+    - 200 g masla
+    - 2 žĺtky
+  Náplň:
+    - 500 g roztierateľného tvarohu
+    - 250 g polotučného hrudkovitého tvarohu
+    - 60 g kryštálového cukru
+    - 2 žĺtky
+    - kôra z 1 citróna
+    - 20 g Zlatého klasu
+    - 10 sliviek
+  Posypanie:
+    - 50 g práškového cukru
+steps:
+  Cesto:
+    - Sypké suroviny zmiešať s maslom, vypracovať mrveničku a pridať žĺtky.
+  Náplň:
+    - V mise zmiešať oba tvarohy, kryštálový cukor, žĺtky, nastrúhanú citrónovú kôru a Zlatý klas.
+    - Slivky odkôstkovať a nakrájať na štvrtiny.
+  Zostavenie:
+    - Na dno tortovej formy utlačiť polovicu mrveničky. Pridať tvarohovú náplň a rozložiť na ňu slivky. Navrch rozmrviť zvyšné cesto.
+  Pečenie:
+    - Piecť v rúre vyhriatej na 160 – 170 °C približne 30 – 45 minút.
+    - Vychladnutý koláč posypať práškovým cukrom.
+notes:
+  - "Počet porcií: 10"
+  - "Doba prípravy: 1 hodina 30 minút"
+  - Potrebná je okrúhla forma s vlnitým okrajom a vyberateľným dnom.
+  - Podľa komentárov sa v rúre pečie dlhšie, pri 170 °C s ventilátorom približne 55 minút.
+source: https://kuchynalidla.sk/recepty/sypany-tvarohovy-kolac-so-slivkami-s-makom

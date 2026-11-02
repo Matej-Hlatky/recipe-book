@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=./schema.json
+---
+title: Mäsové rizoto so špargľou, cherry paradajkami a s parmezánom
+category: Talianska kuchyňa
+ingredients:
+  - 200 g bielej špargle
+  - 200 g zelenej špargle
+  - 1 zväzok jarnej cibuľky
+  - olivový olej
+  - 300 g mletého mäsa mix
+  - soľ
+  - čierne mleté korenie
+  - 200 g ryže arborio
+  - 100 ml bieleho suchého vína
+  - 150 g cherry paradajok
+  - zeleninový vývar
+  - čerstvý tymian
+  - 50 g parmezánu
+  - 50 g masla
+  - šťava z 1/2 citróna
+  - čerstvá petržlenová vňať
+steps:
+  - Bielu a zelenú špargľu ošúpať, odkrojiť konce a nakrájať na menšie kúsky. Biele časti cibuľky nasekať nadrobno.
+  - Na rozpálenom oleji orestovať cibuľku, pridať mäso, ochutiť soľou a korením a restovať.
+  - Prisypať ryžu, premiešať a podliať vínom. Krátko variť, kým sa z vína neodparí alkohol, potom pridať nakrájané cherry paradajky a priliať vývar.
+  - Po 10 minútach podľa potreby priliať vývar, pridať tymian a špargľu a dochutiť soľou a korením.
+  - Prisypať nastrúhaný parmezán, pridať maslo a citrónovú šťavu a nechať pod pokrievkou postáť.
+  - Posypať petržlenovou vňaťou. Podávať v hlbokom tanieri, posypané parmezánom a pokvapkané olivovým olejom.
+notes:
+  - "Počet porcií: 4"
+  - "Doba prípravy: 45 minút"
+source: https://kuchynalidla.sk/recepty/masove-rizoto-so-sparglou-cherry-paradajkami-s-parmezanom

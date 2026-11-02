@@ -28,11 +28,12 @@ Run from the repository root (templates and assets are loaded by relative path).
 - `templates/site/` – site head partial, contents page, recipe page (HTML5), service worker (`sw.js.mustache`)
 - `assets/site.css`, `assets/fonts/`, `assets/favicon.svg`, `assets/manifest.webmanifest`, `assets/icons/` – site only; the ePub uses `assets/style.css`
 - `recipes/schema.json` – JSON schema for recipe files; keep it in sync with `Recipe.fromYaml`
+- `README.md` links to `docs/adding-recipes.md`, `docs/app.md` and `docs/releases.md` – keep them in sync with recipe conventions, the app and the workflows
 - `docs/superpowers/specs/2026-10-31-static-website-design.md` – website design (look, page contents, app, build, deploy); keep it in sync with site changes
 
 ## Workflow
 
-- Work on a feature branch; squash-merge it into `main`.
+- Work on a feature branch named with the `feature/` prefix (e.g. `feature/more-recipes`); squash-merge it into `main`.
 - Write tests first (`test/` mirrors `lib/`).
 - CI: `test.yml` runs analyze and tests on every push; `build.yml` builds the ePub and the website for PRs; `release.yml` runs on every push to `main` and creates a release tagged with the Bratislava date and time (e.g. `2026-10-08_21-36`), the ePub attached and notes since the previous `main` commit; `pages.yml` publishes the website (`build/site`) to GitHub Pages on every push to `main`. All workflows can also be run manually; releases and Pages deployments only from `main`.
 
@@ -50,7 +51,7 @@ Run from the repository root (templates and assets are loaded by relative path).
 ## Recipe conventions
 
 - One recipe per file, validated by `recipes/schema.json`.
-- File names use a Slovak category prefix: `dezert-`, `kolac-`, `polievka-`, `priloha-`, `slane-`, `india-`, `sk-` (never English, e.g. `indian-`).
+- File names use a Slovak category prefix: `dezert-`, `kolac-`, `polievka-`, `priloha-`, `slane-`, `india-`, `sk-`, `it-`, `es-`, `ostatne-` (never English, e.g. `indian-`).
 - Slovak text is written with full diacritics.
 - Use normal spaces; the build adds the no-break space after short words (`a`, `v`, `do`, `na`, …). Don't type U+00A0 or `&nbsp;` into recipes.
 - `ingredients` and `steps` are either a flat list or a map of section name to list (e.g. `Cesto`, `Posýpka`, `Pečenie`); a field can't mix both. Use sections instead of YAML comments for content that belongs in the book. The final baking goes into its own `Pečenie` steps section; pre-baking a part (e.g. a crust) stays in that part's section.

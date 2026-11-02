@@ -2,8 +2,8 @@
 - [x] Script to parse yaml files into a data structure
 - [x] Build TOC based on `category`
 - [x] Add few real recipes
-- [ ] Styling - basic text formatting
+- [ ] Styling - basic text formatting inside the steps
 - [x] Archive as ZIP with ePub metadata
 - [ ] Support more attributes and details (`tags`, `prepTime`, `complexity`, `accessories`)
 - [x] Recipe categories as new chapters
-- [ ] Tags support
+- [ ] Merge categories into "Main" and add cuisine for the kitchen style (Italian, Indian, Spanish, Austria-Hungary)

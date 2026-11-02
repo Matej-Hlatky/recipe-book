@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:path/path.dart' as p;
+
 import '../models/recipe.dart';
 import '../rendering/renderer.dart';
 
@@ -60,11 +62,11 @@ class SiteBuilder {
     }
   }
 
-  /// Paths of all files in [outDir], relative to it, sorted.
+  /// URL paths of all files in [outDir], relative to it, sorted.
   List<String> _builtFiles() => outDir
       .listSync(recursive: true)
       .whereType<File>()
-      .map((f) => f.path.substring(outDir.path.length + 1))
+      .map((f) => p.split(p.relative(f.path, from: outDir.path)).join('/'))
       .toList()
     ..sort();
 }

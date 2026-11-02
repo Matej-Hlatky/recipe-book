@@ -84,10 +84,13 @@ void main() {
         .listSync(recursive: true)
         .whereType<File>()
         .map((f) => f.path.substring(outDir.path.length + 1))
+        .map((path) => path.replaceAll(r'\', '/'))
         .where((path) => path != 'sw.js');
     for (final path in files) {
       expect(js, contains('"$path"'), reason: path);
     }
+    expect(js, contains('"icons/icon-192.png"'));
+    expect(js, isNot(contains(r'\\')));
     expect(js, contains('"./"'));
     expect(js, isNot(contains('"sw.js"')));
   });

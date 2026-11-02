@@ -1,0 +1,37 @@
+# yaml-language-server: $schema=./schema.json
+---
+title: Fit koláč z vločiek, tvarohu a ovocia
+category: Dezerty a koláče
+ingredients:
+  Mrvenička:
+    - 200 g celozrnnej polohrubej múky (špaldovej alebo pšeničnej)
+    - 150 g celých ovsených vločiek
+    - 125 g masla
+    - 1/2 ČL sódy bikarbóny
+    - 50 g nerafinovaného trstinového cukru
+    - štipka soli
+  Tvarohová plnka:
+    - 650 g jemného nízkotučného tvarohu
+    - šťava z 1/2 citróna
+    - 30 g nerafinovaného trstinového cukru
+    - 2 vajcia
+  Ovocie:
+    - 200 g čerstvých alebo mrazených čučoriedok
+    - 200 g čerstvých alebo mrazených brusníc (alebo jahôd)
+    - 1 PL nerafinovaného trstinového cukru
+steps:
+  Mrvenička:
+    - Do misy vysypať múku a vločky, pridať maslo nakrájané na kocky, cukor, sódu bikarbónu a soľ. Prstami vytvoriť mrveničku a dať ju zatiaľ do chladničky.
+  Tvarohová plnka:
+    - Zmiešať všetky suroviny na plnku.
+  Zostavenie:
+    - Formu 21 × 21 cm obložiť papierom na pečenie tak, aby prevísal cez okraje.
+    - Na dno formy vysypať asi 2/3 mrveničky a prstami pritlačiť.
+    - Vyliať na ňu plnku, posypať ovocím, ovocie posypať cukrom a navrch vysypať zvyšnú mrveničku.
+  Pečenie:
+    - Piecť v rúre predhriatej na 180 °C 45 minút.
+    - Nechať vychladnúť pri izbovej teplote, potom 1 hodinu v chladničke, aby sa dal lepšie krájať.
+notes:
+  - "Počet porcií: 6"
+  - "Doba prípravy: 2 hodiny 25 minút (s chladením)"
+source: https://generalibalans.sk/fit-kolac-z-vlociek-tvarohu-a-ovocia/

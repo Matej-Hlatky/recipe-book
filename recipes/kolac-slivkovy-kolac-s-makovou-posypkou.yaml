@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=./schema.json
+---
+title: Slivkový koláč s makovou posýpkou
+category: Dezerty a koláče
+ingredients:
+  Cesto:
+    - 3 hrnčeky polohrubej múky
+    - 1 hrnček hnedého kryštálového cukru
+    - 1/2 hrnčeka oleja
+    - 1 balíček škoricového cukru
+    - 1 – 1,5 hrnčeka mlieka
+    - 1 vajce
+    - 1 balíček prášku do pečiva
+    - citrónová kôra
+    - slivky
+  Posýpka:
+    - 3/4 hrnčeka zmesi odloženej z cesta
+    - 1 – 2 PL práškového cukru
+    - mletá škorica
+    - 100 g mletého maku
+    - 50 g a viac studeného masla
+    - škoricový cukor
+steps:
+  Cesto:
+    - Zmiešať múku, cukor, olej a škoricový cukor a vidličkou rozmiešať na čo najdrobnejšiu olejovú drobenku.
+    - Z drobenky odložiť bokom 3/4 hrnčeka na posýpku.
+    - Do zvyšku zamiešať vajce, mlieko, citrónovú kôru a prášok do pečiva. Cesto má byť roztierateľné, nie riedke; mlieka môže byť treba viac, podľa múky.
+    - Cesto vyliať na vymastený, múkou vysypaný plech a poukladať naň slivky.
+  Posýpka:
+    - K odloženej drobenke pridať mak, studené maslo, cukor podľa chuti a škoricu a vypracovať mastnejšiu posýpku s hrudkami maku obalenými v masle.
+    - Posýpku rozsypať na koláč, navrch prípadne poukladať plátky masla.
+  Pečenie:
+    - Piecť pri 200 °C približne 35 minút.
+notes:
+  - Hrnček má 2,5 dl.
+  - "Doba prípravy: 50 minút"
+  - Doma pomletý mak je mastnejší; kupovaný je suchší, treba k nemu viac masla.
+source: https://varecha.pravda.sk/recepty/slivkovy-kolac-s-makovou-posypkou-fotorecept/43816-recept.html
