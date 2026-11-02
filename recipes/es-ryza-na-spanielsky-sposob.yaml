@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=./schema.json
+---
+title: Ryža na španielsky spôsob
+category: Španielska kuchyňa
+ingredients:
+  - 1 kg mletého mäsa mix
+  - olivový olej
+  - 300 g guľatozrnnej ryže
+  - morská soľ
+  - 1 cibuľa
+  - 50 g choriza
+  - 4 strúčiky cesnaku
+  - 2 štipľavé papričky (zelená, červená)
+  - čierne korenie
+  - celá rasca
+  - 1 hrsť zelených olív bez kôstok
+  - 100 ml bieleho suchého vína
+  - 1 konzerva (425 ml) krájaných lúpaných paradajok
+  - čerstvá petržlenová vňať
+  - 1 hrsť poľného šalátu
+  - 2 citróny
+steps:
+  - V kastróle vhodnom do rúry rozohriať olej, nasypať ryžu, osoliť a krátko opražiť. Zaliať vriacou vodou asi 1 cm nad povrch, premiešať, prikryť pokrievkou a dať do rúry vyhriatej na 200 °C na približne 15 minút.
+  - Na väčšej panvici s rozohriatym olejom postupne restovať nadrobno nakrájanú cibuľu, chorizo, cesnak, papričky zbavené jadierok a mleté mäso; osoliť a okoreniť. Restovať, kým mäso nezíska zlatohnedú farbu.
+  - Posypať rascou a pridať natrhané alebo prekrojené olivy. Podliať vínom a chvíľu povariť, aby sa odparil alkohol. Zaliať paradajkami a premiešať.
+  - Do zmesi prisypať upečenú ryžu, pridať nasekanú petržlenovú vňať a premiešať.
+  - Podávať v hlbšom tanieri, ozdobené poľným šalátom a polovicou citróna.
+notes:
+  - "Počet porcií: 4"
+  - "Doba prípravy: 40 minút"
+source: https://kuchynalidla.sk/recepty/ryza-na-spanielsky-sposob

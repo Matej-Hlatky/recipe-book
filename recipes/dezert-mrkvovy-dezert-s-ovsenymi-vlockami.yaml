@@ -1,0 +1,53 @@
+# yaml-language-server: $schema=./schema.json
+---
+title: Mrkvový dezert s ovsenými vločkami
+category: Dezerty a koláče
+ingredients:
+  Cesto:
+    - 300 g mrkvy (asi 2 stredné kusy)
+    - 180 g jemných ovsených vločiek
+    - 150 g jablka (1 stredný kus)
+    - 70 g medu
+    - 70 g gréckeho jogurtu alebo kyslej smotany
+    - 45 g vlašských orechov
+    - 20 g rastlinného alebo kokosového oleja
+    - 15 g hrozienok
+    - 5 g sódy bikarbóny
+    - 5 g mletej škorice
+    - 2 vajcia
+    - 1 citrón (kôra a 1,5 PL šťavy)
+    - štipka soli
+    - maslo na vymastenie formy
+  Posýpka:
+    - 3 PL jemných ovsených vločiek
+    - 1 PL medu
+    - 1 PL rastlinného alebo kokosového oleja
+    - 1 ČL mletej škorice
+  Poleva:
+    - 250 g krémového syra alebo ricotty
+    - 2 PL gréckeho jogurtu
+    - 1 PL medu
+    - 1/4 ČL vanilkového extraktu
+    - pár kvapiek citrónovej šťavy
+    - hrsť mandľových lupienkov na ozdobu
+steps:
+  Cesto:
+    - Rúru predhriať na 180 °C. Tortovú formu s priemerom 20 cm vystlať papierom na pečenie a boky vymastiť maslom.
+    - Ovsené vločky rozmixovať na jemnú múku a presypať do veľkej misy. Pridať nasekané vlašské orechy a škoricu.
+    - Mrkvu nastrúhať najemno, očistené jablko nahrubo, zmiešať v samostatnej miske a primiešať jogurt.
+    - V inej miske rozšľahať vajcia so soľou a vliať ich k mrkve a jablku. Pridať med, citrónovú kôru, hrozienka a olej.
+    - Mokrú zmes preložiť k suchej. Sódu bikarbónu aktivovať citrónovou šťavou, pridať do misy a vypracovať homogénne cesto.
+    - Cesto rovnomerne rozotrieť do formy.
+  Posýpka:
+    - Zmiešať suroviny na posýpku a rovnomerne ju nasypať na cesto.
+  Pečenie:
+    - Piecť približne 50 – 55 minút. Nechať aspoň 10 minút chladnúť vo forme, potom preložiť na mriežku.
+  Poleva:
+    - Zmiešať krémový syr, jogurt, vanilkový extrakt, med a citrónovú šťavu na hladký krém.
+    - Polevu natrieť na úplne vychladnutý koláč a husto posypať mandľovými lupienkami.
+    - Pred podávaním nechať stuhnúť v chladničke aspoň 30 minút.
+notes:
+  - "Počet porcií: 8 – 10"
+  - "Doba prípravy: 1 hodina 15 minút"
+  - Med sa dá nahradiť javorovým alebo agávovým sirupom.
+source: https://varimeslaskou.sk/mrkvovy-dezert-s-ovsenymi-vlockami/

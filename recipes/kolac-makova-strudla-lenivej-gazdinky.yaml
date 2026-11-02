@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=./schema.json
+---
+title: Maková štrúdľa lenivej gazdinky
+category: Dezerty a koláče
+ingredients:
+  Cesto:
+    - 400 g hladkej múky
+    - 125 g masla
+    - 300 g kyslej smotany (pochúťkovej)
+    - štipka soli
+  Plnka:
+    - 2 balenia hotovej makovej náplne
+    - 50 ml mlieka
+  Potretie:
+    - 1 vajce
+steps:
+  Cesto:
+    - Všetky suroviny na cesto zmiešať. Cesto zabalené v potravinovej fólii vydrží v chladničke aj týždeň.
+  Plnka:
+    - Hotovú makovú plnku zmiešať s mliekom.
+  Pečenie:
+    - Cesto vyvaľkať, naplniť plnkou a zvinúť. Potrieť vajcom.
+    - Piecť pri 180 °C približne 20 minút.
+notes:
+  - "Počet porcií: 20"
+  - "Doba prípravy: 30 minút"
+  - Dajú sa upiecť dve malé alebo jedna veľká štrúdľa.
+  - Namiesto makovej sa dá použiť akákoľvek iná plnka. Domáca maková plnka na jednu štrúdľu – 200 g maku a 150 g cukru.
+source: https://varecha.pravda.sk/recepty/makova-strudla-lenivej-gazdinky-/86700-recept.html
